@@ -5,7 +5,7 @@ import {
     onAuthStateChanged,
 
 } from "firebase/auth";
-import { RegsiterNewUser, auth, userExist } from "../firebase/firebase";
+import { RegsiterNewUser, auth, getUserInfo, userExist } from "../firebase/firebase";
 
 
 export default function AuthProvider({ children, onUserLoggedIn, onUserNotLoggedIn, onUserNotRegister }) {
@@ -17,21 +17,26 @@ export default function AuthProvider({ children, onUserLoggedIn, onUserNotLogged
             if (user) {
                 const isRegistered = await userExist(user.uid);
                 if (isRegistered) {
-                    navigate("/dashboard")
-                    onUserLoggedIn(user);
+                    const userInfo = await getUserInfo(user.uid)
+                    if (userInfo.processCompleted) {
+                        onUserLoggedIn(userInfo);
+                    } else {
+                        onUserNotRegister(userInfo);
+                    }
                 } else {
                     await RegsiterNewUser({
                         uid: user.uid,
                         displayName: user.displayName,
                         email: user.email,
                         profilePicture: "",
-                        adminPermission: false
+                        adminPermission: false,
+                        processCompleted: false,
                     })
                     onUserNotRegister(user);
                 }
             } else {
                 onUserNotLoggedIn(user);
-                console.log("No hay Usuarios Coectados...");
+                console.log("No hay Usuarios Conectados...");
             }
         });
     }, [navigate, onUserLoggedIn, onUserNotLoggedIn, onUserNotRegister]);

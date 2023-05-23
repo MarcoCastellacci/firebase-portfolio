@@ -10,7 +10,7 @@ import DashboardView from './routes/dashboardView';
 import ProfileEditView from './routes/profileEditView';
 import ProfileView from './routes/profileView';
 import SignOutView from './routes/signoutView';
-
+import ConfirmEmail from './routes/confirmEmail'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +22,7 @@ root.render(
       <Route path='/dashboard/profile' element={<ProfileEditView />} />
       <Route path='/signout' element={<SignOutView />} />
       <Route path='u/:username' element={<ProfileView />} />
+      <Route path='/confirm_email' element={<ConfirmEmail />} />
 
     </Routes>
   </BrowserRouter>

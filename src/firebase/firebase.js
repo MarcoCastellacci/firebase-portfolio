@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
 import {
-    initializeFirestore,
+    getFirestore,
     // eslint-disable-next-line
     collection,
     // eslint-disable-next-line
@@ -36,7 +36,7 @@ import {
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_APIKEY,
     authDomain: process.env.REACT_APP_AUTHDOMAIN,
-    projectId: process.env.REACT_APP_PROJECTID,
+    projectId: "portfolio-marco",
     storageBucket: process.env.REACT_APP_STORAGEBUCKET,
     messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
     appId: process.env.REACT_APP_APPID,
@@ -46,10 +46,9 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-export const db = initializeFirestore(app, {
-    experimentalAutoDetectLongPolling: true
-});
-export const storage = getStorage(app);
+const db = getFirestore(app);
+// eslint-disable-next-line
+const storage = getStorage(app);
 
 export async function userExist(uid) {
     try {
@@ -62,20 +61,24 @@ export async function userExist(uid) {
     }
 }
 
-export async function existsUserName(username) {
+export async function ConfirmEmail(email) {
     const users = [];
-    const docsRef = collection(db, 'users')
-    const q = query(docsRef, where('username', '==', username));
-    const snapshot = await getDocs(q);
+    try {
+        const docsRef = collection(db, 'users')
+        const q = query(docsRef, where('email_confirmed', '==', email));
+        const querySnapshot = await getDocs(q);
 
-    snapshot.forEach((doc) => {
-        users.push(doc.data());
-    });
+        querySnapshot.forEach((doc) => {
+            users.push(doc.data());
+        });
 
-    return users.length > 0 ? users[0].uid : null;
+        return users.length > 0 ? users[0].uid : null;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
-export async function RegsiterNewUser(user){
+export async function RegsiterNewUser(user) {
     try {
         const collectionRef = collection(db, 'users')
         const docRef = doc(collectionRef, user.uid)
@@ -85,11 +88,22 @@ export async function RegsiterNewUser(user){
     }
 }
 
-export async function UpdateUser(user){
+export async function UpdateUser(user) {
     try {
         const collectionRef = collection(db, 'users')
         const docRef = doc(collectionRef, user.uid)
         await setDoc(docRef, user)
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function getUserInfo(uid){
+    try {
+        const docRef = doc(db, "users", uid)
+        const document = await getDoc(docRef)
+
+        return document.data();
     } catch (error) {
         console.error(error);
     }
