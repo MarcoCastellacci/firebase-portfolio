@@ -4,7 +4,7 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
 } from "firebase/auth";
-import { auth, userExist } from "../firebase/firebase";
+import { auth } from "../firebase/firebase";
 import AuthProvider from "../components/authProvider";
 
 export default function LoginView() {

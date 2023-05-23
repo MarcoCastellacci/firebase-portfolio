@@ -25,10 +25,9 @@ export default function AuthProvider({ children, onUserLoggedIn, onUserNotLogged
                         displayName: user.displayName,
                         email: user.email,
                         profilePicture: "",
-                        adminPermissed: false
+                        adminPermission: false
                     })
                     onUserNotRegister(user);
-                    navigate("/signout")
                 }
             } else {
                 onUserNotLoggedIn(user);
