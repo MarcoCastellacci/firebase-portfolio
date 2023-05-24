@@ -18,7 +18,7 @@ import {
     // eslint-disable-next-line
     setDoc,
     // eslint-disable-next-line
-    deleteDoc
+    deleteDoc,
 } from 'firebase/firestore';
 import {
     getStorage,
@@ -98,12 +98,61 @@ export async function UpdateUser(user) {
     }
 }
 
-export async function getUserInfo(uid){
+export async function getUserInfo(uid) {
     try {
         const docRef = doc(db, "users", uid)
         const document = await getDoc(docRef)
 
         return document.data();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function insertNewProyect(proyect) {
+    try {
+        const docRef = collection(db, "proyects")
+        const res = await addDoc(docRef, proyect)
+        return res
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function getProyects(uid) {
+    const proyects = []
+    try {
+        const collectionRef = collection(db, "proyects")
+        const q = query(collectionRef, where("user", "==", uid))
+        const querySnapshot = await getDocs(q)
+
+        querySnapshot.forEach(doc => {
+            const proyect = { ...doc.data() }
+            proyect.docId = doc.id
+            proyects.push(proyect)
+        })
+        return proyects
+    } catch (error) {
+        console.error(error);
+    }
+
+}
+
+export async function UpdateProyect(docId, proyect){
+    try {
+        const docRef = doc(db, "proyects", docId)
+        const res = setDoc(docRef, proyect)
+        return res
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function DeleteProyect(docId){
+    try {
+        const docRef = doc(db, "proyects", docId)
+        const res = await deleteDoc(docRef)
+        return res
     } catch (error) {
         console.error(error);
     }
