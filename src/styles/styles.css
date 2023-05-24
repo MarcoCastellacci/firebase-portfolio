@@ -6,7 +6,6 @@ body {
 
 /* Home */
 .home-container {
-    display: flex;
     flex-wrap: wrap;
     align-items: center;
     min-height: 100vh;
@@ -135,6 +134,34 @@ body {
     margin-bottom: auto !important;
 }
 
+
+.img-proyect{
+    width: 30%;
+    border-radius: 20px;
+}
+
+.btn-delete{
+    height: 10%;
+
+}
+.proyect-profile{
+    display: flex;
+    justify-content: center;
+    color: #989898;
+    flex-wrap: wrap;
+}
+
+.proyect-profile div{
+    margin: .5rem;
+}
+
+.proyect-link{
+margin: .5rem;
+}
+
+.proyect-link img{
+margin: .5rem;
+}
 
 /* Contacto Form */
 /* From uiverse.io by @WhiteNervosa */

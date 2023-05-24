@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react"
+import '../styles/styles.css'
 
 
 
@@ -52,29 +53,32 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
 
     return (
         <>
-            <div key={docId}>
-                <div>{editUrl ? (<>
-                    <input ref={titleRef} value={currentUrl} onChange={handleChangeUrl} onBlur={handleBlurUrl} />
-                </>) :
-                    (<>
-                        <button onClick={handleEditUrl}>Edit</button>
-                        <a href={url} className="proyect-link"><img className="img-proyect" src={imageUrl} alt="Logo de la Tienda" /></a>
-                    </>)}
+            <div className="proyect-profile">
+                <div key={docId}>
+                    <div>{editUrl ? (<>
+                        <input ref={titleRef} value={currentUrl} onChange={handleChangeUrl} onBlur={handleBlurUrl} />
+                    </>) :
+                        (<>
+                            <button onClick={handleEditUrl}>Edit</button>
+                            <a href={url} className="proyect-link"><img className="img-proyect" src={imageUrl} alt="Logo de la Tienda" /></a>
+                        </>)}
+                    </div>
+                    <div>{editTitle ? (<>
+                        <input ref={urlRef} value={currentTitle} onChange={handleChangeTitle} onBlur={handleBlurTitle} />
+                    </>) : (<>
+                        <button onClick={handleEditTitle}>Edit</button>
+                        <h2>{title}</h2>
+                    </>
+                    )}
+                    </div>
                 </div>
-                <div>{editTitle ? (<>
-                    <input ref={urlRef} value={currentTitle} onChange={handleChangeTitle} onBlur={handleBlurTitle} />
-                </>) : (<>
-                    <button onClick={handleEditTitle}>Edit</button>
-                    <h2>{title}</h2>
-                </>
-                )}
+                <div>
+                    <p>{description}</p>
+                </div>
+                <div>
+                    <button onClick={handleDeleteProyect} className="btn-delete">Delete</button>
                 </div>
             </div>
-            <div>
-                <p>{description}</p>
-            </div>
-
-            <button onClick={handleDeleteProyect}>Delete</button>
         </>
     )
 
