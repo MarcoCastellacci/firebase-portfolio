@@ -54,13 +54,29 @@ export async function userExist(uid) {
     try {
         const docRef = doc(db, 'users', uid);
         const res = await getDoc(docRef);
-        console.log(res);
+        // console.log(res);
         return res.exists();
     } catch (err) {
         console.error(err);
     }
 }
+export async function userNameExist(username) {
+    const users = [];
+    try {
+        const docsRef = collection(db, 'users')
+        const q = query(docsRef, where('displayName', '==', username));
+        const querySnapshot = await getDocs(q);
 
+        querySnapshot.forEach((doc) => {
+            users.push(doc.data());
+        });
+
+        return users.length > 0 ? users[0].uid : null;
+    } catch (error) {
+        console.error(error);
+    }
+
+}
 export async function ConfirmEmail(email) {
     const users = [];
     try {
@@ -138,7 +154,7 @@ export async function getProyects(uid) {
 
 }
 
-export async function UpdateProyect(docId, proyect){
+export async function UpdateProyect(docId, proyect) {
     try {
         const docRef = doc(db, "proyects", docId)
         const res = setDoc(docRef, proyect)
@@ -148,7 +164,7 @@ export async function UpdateProyect(docId, proyect){
     }
 }
 
-export async function DeleteProyect(docId){
+export async function DeleteProyect(docId) {
     try {
         const docRef = doc(db, "proyects", docId)
         const res = await deleteDoc(docRef)
@@ -156,4 +172,34 @@ export async function DeleteProyect(docId){
     } catch (error) {
         console.error(error);
     }
+}
+
+export async function setProfilePhoto(uid, file) {
+    try {
+        const imageRef = ref(storage, `image/${uid}`);
+        const resUpload = await uploadBytes(imageRef, file);
+        return resUpload
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function getProfilePhoto(profilePicture) {
+    try {
+        const imageRef = ref(storage, profilePicture)
+        const url = await getDownloadURL(imageRef)
+        return url;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function getUserProfileInfo(uid) {
+    const profileInfo = await getUserInfo(uid)
+    const proyects = await getProyects(uid)
+    return { profileInfo: profileInfo, proyects: proyects }
+}
+
+export async function logout() {
+    await auth.signOut();
 }

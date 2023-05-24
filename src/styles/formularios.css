@@ -1,0 +1,144 @@
+.input {
+    width: 60%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.input:valid {
+    border-color: #00ff2a;
+    color: #00ff2a;
+    box-shadow: 2px 2px 8px 1px #00ff2a;
+}
+
+.input:invalid {
+    border-color: #ff0000;
+    color: #ff0000;
+    box-shadow: 2px 2px 8px 1px #ff0000;
+    /* translate: -8px 8px 0px 0px; */
+}
+
+.text {
+    margin-top: 10px;
+    color: black;
+}
+
+.input-fomr {
+    border: 2px solid transparent;
+    outline: none;
+    border-bottom: 2px solid #3f3f3f;
+    caret-color: #3f3f3f;
+    background-color: #212121;
+    padding: 5px;
+    transition: .5s linear;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+.input-form {
+    border: 2px solid #fa4753;
+    caret-color: #fa4753;
+    color: #fa4753;
+    box-shadow: 4px 4px 10px #070707;
+}
+
+.input-form:focus::placeholder {
+    color: #fa4753;
+}
+
+.form {
+    width: 100%;
+    margin: .5rem;
+    display: flex;
+    color: #ccc;
+}
+
+.form label {
+    margin: 0 .5rem;
+    width: 15%;
+}
+
+.form-upload {
+    width: 100% !important;
+    display: flex;
+    margin: 2rem;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.btn-submit {
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: 1px solid rgb(61, 106, 255);
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: transparent;
+    color: #7708f7;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.btn-submit:hover {
+    background: rgb(61, 106, 255);
+    box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.btn-submit:hover::before {
+    -webkit-animation: sh02 0.5s 0s linear;
+    -moz-animation: sh02 0.5s 0s linear;
+    animation: sh02 0.5s 0s linear;
+}
+
+.btn-submit::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    -webkit-transform: skewX(-20deg);
+    -moz-transform: skewX(-20deg);
+    -ms-transform: skewX(-20deg);
+    -o-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+    from {
+        opacity: 0;
+        left: 0%;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        left: 100%;
+    }
+}
+
+.btn-submit:active {
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: box-shadow 0.2s ease-in;
+    -moz-transition: box-shadow 0.2s ease-in;
+    transition: box-shadow 0.2s ease-in;
+}

@@ -1,0 +1,286 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Home */
+.home-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.bg-container {
+    background: url('../Assets/fondo.gif');
+    background-blend-mode: multiply, multiply
+}
+
+/* Detail */
+
+.details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
+    background-blend-mode: multiply, multiply;
+}
+
+/* Navbar */
+.nombre-navbar {
+    margin: 0 1rem;
+    font-size: 2rem;
+}
+
+.link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+    transition: all 0.3s ease-in-out;
+    margin: 0 .5rem;
+}
+
+.link:hover {
+    color: rgb(80, 124, 113);
+}
+
+/* Skills */
+.skills-container {
+    display: flex;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
+    background-blend-mode: multiply, multiply;
+}
+
+.skills-card {
+    margin: 2rem 1rem;
+}
+
+/* From uiverse.io by @alexruix */
+.card {
+    height: 254px;
+    width: 25%;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border-radius: 1em;
+    box-shadow: 0 0 20px 8px #29387a;
+    z-index: 1;
+
+}
+
+/*Image*/
+.card-image {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    background: #0a3394;
+    background: linear-gradient(to top, #021e5f, #234885);
+    border-radius: 10px;
+}
+
+.card-image img {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+/*Description */
+.card-description {
+    display: flex;
+    position: absolute;
+    gap: 1em;
+    flex-direction: column;
+    background-color: #7e92d4;
+    height: 70%;
+    bottom: 0;
+    border-radius: 1em 1em 0 0;
+    transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+/*Text*/
+.text-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.text-body {
+    font-size: 1rem;
+    line-height: 1rem;
+    margin-top: 0;
+}
+
+
+/* Hover states */
+
+.card:hover .card-description {
+    transform: translateY(100%);
+}
+
+.card-description:hover {
+    transform: translateY(100%);
+    margin-bottom: auto !important;
+}
+
+
+/* Contacto Form */
+/* From uiverse.io by @WhiteNervosa */
+/* 
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-blend-mode: multiply, multiply;
+}
+.input-text {
+    width: 100%;
+    height: 2rem;
+    margin-bottom: 1rem;
+}
+.input-mail{
+    width: 100%;
+    height: 2rem;
+    margin-bottom: 1rem;
+}
+.input-tel{
+    width: 100%;
+    height: 2rem;
+    margin-bottom: 1rem;
+}
+.textarea-input {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.textarea-msj {
+    width: 100%;
+    background-color: #353535;
+    border-radius: .5em;
+    color: #e8e8e8;
+    resize: none !important;
+}
+.submitButton {
+    background-color: rgb(61, 141, 63);
+    border: none;
+    color: white;
+    padding: 5px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.submitButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(61, 141, 63,0.24), 0 17px 50px 0 rgba(61, 141, 63,0.19);
+}
+
+
+.textInputWrapper {
+    position: relative;
+    width: 180px;
+    margin: 12px 5px;
+    --accent-color: #a3e583;
+}
+
+.textInputWrapper:before {
+    transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+}
+
+.textInputWrapper:before,
+.textInputWrapper:after {
+    content: "";
+    left: 0;
+    right: 0;
+    position: absolute;
+    pointer-events: none;
+    bottom: -1px;
+    z-index: 4;
+    width: 100%;
+}
+
+.textInputWrapper:focus-within:before {
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.textInputWrapper:before {
+    transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+}
+
+.textInputWrapper:focus-within:before {
+    border-bottom: 1px solid var(--accent-color);
+    transform: scaleX(1);
+}
+
+.textInputWrapper:focus-within:after {
+    border-bottom: 2px solid var(--accent-color);
+    transform: scaleX(1);
+}
+
+.textInputWrapper:after {
+    content: "";
+    transform: scaleX(0);
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    will-change: transform;
+    border-bottom: 2px solid var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
+.textInput::placeholder {
+    transition: opacity 250ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    opacity: 1;
+    -webkit-user-select: none;
+    color: rgba(255, 255, 255, 0.582);
+}
+
+.textInputWrapper .textInput {
+    border-radius: 5px 5px 0px 0px;
+    box-shadow: 0px 2px 5px rgb(35 35 35 / 30%);
+    max-height: 36px;
+    background-color: #252525;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 200ms;
+    transition-property: background-color;
+    color: #e8e8e8;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px;
+    width: 100%;
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+}
+
+.textInputWrapper .textInput:focus,
+.textInputWrapper .textInput:active {
+    outline: none;
+}
+
+.textInputWrapper:focus-within .textInput,
+.textInputWrapper .textInput:focus,
+.textInputWrapper .textInput:active {
+    background-color: #353535;
+}
+
+.textInputWrapper:focus-within .textInput::placeholder {
+    opacity: 0;
+} */

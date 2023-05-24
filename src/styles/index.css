@@ -12,6 +12,13 @@ code {
     monospace;
 }
 
+.login {
+  background: url('../Assets/fondo.gif');
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .descriptioon-txt {
   resize: none;

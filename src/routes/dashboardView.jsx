@@ -6,6 +6,9 @@ import { v4 as uuidv4 } from "uuid";
 import DashWrapper from "../components/dashboardWrapper";
 import { DeleteProyect, UpdateProyect, getProyects, insertNewProyect } from "../firebase/firebase";
 import Proyects from "../components/proyects";
+import ProyectsPages from "../routes/proyectsPages";
+import LoaderAnimation from "../components/loader";
+import '../styles/formularios.css'
 
 
 
@@ -16,7 +19,7 @@ export default function DashboardView() {
     // eslint-disable-next-line
     const [currentUser, setCurrentUser] = useState()
     const [state, setState] = useState(0)
-
+    const [adminPermisison, setAdminPermission] = useState(false)
     const [title, setTitle] = useState("")
     const [url, setUrl] = useState("")
     const [imageUrl, setImageUrl] = useState("")
@@ -30,6 +33,9 @@ export default function DashboardView() {
 
     async function handleUserLoggedIn(user) {
         setCurrentUser(user)
+        if (user.adminPermission) {
+            setAdminPermission(true)
+        }
         setState(2)
         const resProyects = await getProyects(user.uid)
         setProyects([...resProyects])
@@ -40,6 +46,7 @@ export default function DashboardView() {
     function handleUserNotLoggedIn() {
         navigate("/login")
     }
+
     if (state === 0) {
         return (
             <>
@@ -47,7 +54,7 @@ export default function DashboardView() {
                     onUserLoggedIn={handleUserLoggedIn}
                     onUserNotRegister={handleUserNotRegister}
                     onUserNotLoggedIn={handleUserNotLoggedIn}>
-                    Dash View
+                    <LoaderAnimation></LoaderAnimation>
                 </AuthProvider>
             </>
         )
@@ -97,7 +104,7 @@ export default function DashboardView() {
 
     async function handleDeleteProyect(docId) {
         await DeleteProyect(docId);
-        const tmp = proyects.filter( proyect => proyect.docId !== docId);
+        const tmp = proyects.filter(proyect => proyect.docId !== docId);
         setProyects([...tmp])
 
     }
@@ -111,32 +118,51 @@ export default function DashboardView() {
 
         await UpdateProyect(docId, proyect)
     }
+    if (adminPermisison) {
+        return (<>
+            <div className="bg-container">
+                <div className="home-container">
+                    <DashWrapper user={currentUser} >
+                        <form action="" onSubmit={handleOnSubmit} className="form-upload">
+                            <div className="form">
+                                <label htmlFor="title" className="input-border">Nombre del Pryecto</label>
+                                <input placeholder="Type here" className="input-form" name="title" onChange={handleOnChange} type="text" />
+                            </div>
+                            <div className="form">
+                                <label htmlFor="url" className="input-border">Url de la Web</label>
+                                <input placeholder="Type here" className="input-form" name="url" onChange={handleOnChange} type="text" />
+                            </div>
 
+                            <div className="form">
+                                <label htmlFor="imageUrl" className="input-border">Nombre del Pryecto</label>
+                                <input placeholder="Type here" className="input-form" name="imageUrl" onChange={handleOnChange} type="text" />
+                            </div>
+
+                            <div className="form">
+                                <label htmlFor="description">Descripcion de la Web</label>
+                                <textarea type="text" name="description" cols="30" rows="10" className="descriptioon-txt input" onChange={handleOnChange} placeholder="Enter Text" required="" />
+                            </div>
+
+                            <div>
+                                <input className="btn-submit" type="submit" value="Crear Nuevo Proyecto" />
+                            </div>
+                        </form>
+                        {proyects?.map((proyect, index) => (
+                            <div key={index}>
+                                <Proyects key={proyect.docId} docId={proyect.docId} url={proyect.url} title={proyect.title} onDelete={handleDeleteProyect} onUpdate={handleUpdateProyect} imageUrl={proyect.imageUrl} description={proyect.description} />
+                            </div>))}
+                    </DashWrapper>
+                </div>
+            </div>
+        </>)
+    }
     return <>
-        <DashWrapper>
-            <div>
-                <h1>Dashboard View</h1>
-
-                <form action="" onSubmit={handleOnSubmit}>
-                    <label htmlFor="title">Title</label>
-                    <input type="text" name="title" onChange={handleOnChange} />
-
-                    <label htmlFor="url">Url</label>
-                    <input type="text" name="url" onChange={handleOnChange} />
-
-                    <label htmlFor="imageUrl">Imagen URL</label>
-                    <input type="text" name="imageUrl" onChange={handleOnChange} />
-
-                    <label htmlFor="description">Url</label>
-                    <textarea name="description" id="description" cols="30" rows="10" className="descriptioon-txt" onChange={handleOnChange} />
-
-                    <input type="submit" value="Crear Nuevo Proyecto" />
-                </form>
-
-                <div>
+        <DashWrapper user={currentUser}>
+            <div className="bg-container">
+                <div className="home-container">
                     {proyects?.map((proyect, index) => (
                         <div key={index}>
-                            <Proyects key={proyect.docId} docId={proyect.docId} url={proyect.url} title={proyect.title} onDelete={handleDeleteProyect} onUpdate={handleUpdateProyect} imageUrl={proyect.imageUrl} description={proyect.description} />
+                            <ProyectsPages key={proyect.docId} url={proyect.url} title={proyect.title} imageUrl={proyect.imageUrl} description={proyect.description} />
                         </div>
                     ))}
                 </div>
