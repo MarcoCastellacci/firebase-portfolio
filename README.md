@@ -25,7 +25,7 @@
 ![](https://github-contributor-stats.vercel.app/api?username=MarcoCastellacci&limit=5&theme=dark&combine_all_yearly_contributions=true)
 
 ### 😂 Random Dev Meme
-<img src="https://rm.up.railway.app/" width="512px"/>
+<img src="https://statics.memondo.com/p/99/crs/2018/10/CR_1081124_02327c9747004892884a83716ad3515c_primer_contacto_con_la_programacion.jpg?cb=9569221" width="512px"/>
 
 ---
 [![](https://visitcount.itsvg.in/api?id=MarcoCastellacci&icon=0&color=9)](https://visitcount.itsvg.in)
