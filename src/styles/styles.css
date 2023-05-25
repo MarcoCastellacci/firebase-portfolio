@@ -19,14 +19,16 @@ body {
 
 /* Login Page */
 
-.btn-login{
+.btn-login {
+    height: 50%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     color: rgb(240, 248, 255);
     font-size: x-small;
 }
 
-.banner-login{
+.banner-login {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -38,19 +40,60 @@ body {
     border-bottom: solid 10px hsla(120, 97%, 14%, 0.4);
 }
 
-.img-homepage{
+.img-homepage {
     display: flex;
     align-items: center;
     height: auto;
     width: 50%;
 }
 
-.img-homepage img{
+.img-homepage img {
     height: 80%;
     width: 20%;
     border-radius: 20px;
     border: solid 10px hsla(120, 97%, 14%, 0.4);
 }
+
+.title-portfolio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display SC', serif;
+    color: rgb(143, 188, 143);
+}
+
+.title-portfolio h1 {
+    font-size: 52px;
+    font-weight: 800;
+    color: rgb(94, 119, 94);
+    margin: 0;
+}
+
+.title-portfolio h3 {
+    font-size: 24px;
+}
+
+.description-profile {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.description-txt-profile {
+    width: 80%;
+    text-align: center;
+    font-family: 'Playfair Display SC', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgb(152, 152, 152);
+    line-height: 2rem;
+    margin-bottom: 20px;
+}
+
+
+
 /* Detail */
 
 .details-container {

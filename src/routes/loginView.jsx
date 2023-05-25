@@ -52,11 +52,30 @@ export default function LoginView() {
             <>
                 <div className="banner-login">
                     <div className="img-homepage">
-                        <img src="https://i.imgur.com/BtpKJHC.jpg" alt="Foto de mi Perfil" />
+                        <img src="https://i.imgur.com/oYuETeq.png" alt="Foto de mi Perfil" />
                     </div>
-                    <div>
-                        <h1>Marco Castellacci <p>Fullstack Developer</p></h1>
+                    <div className="title-portfolio">
+                        <h1>Marco Castellacci </h1> <h3>Fullstack Developer</h3>
                     </div>
+                </div>
+                <div className="description-profile bg-container">
+                    <h2 className="description-txt-profile ">
+                        Soy un desarrollador web apasionado por la tecnología, dedicado a perfeccionar mis habilidades y conocimientos. Mi entusiasmo por aprender nuevas tecnologías y mi capacidad para colaborar en equipo me impulsan a alcanzar resultados excepcionales. La tecnología y la programación han dejado de ser solo un trabajo para convertirse en mi pasión.
+                        <br />
+                        Hola!
+                        Espero que estés teniendo un excelente día. Me gustaría compartirte más detalles sobre mi perfil profesional y mi entusiasmo por el mundo de la Programacion.
+                        Soy Desarrollador con una sólida base de más de 700 horas de experiencia práctica en un entorno de simulación laboral REAL. Durante este tiempo, he trabajado con una amplia gama de tecnologías, incluyendo React, MongoDb, Node JS, Express, Git, Github, JavaScript, C#, Visual Studio, .NET, Python, SQL, HTML5 y CSS.
+                        <br />
+                        Estoy familiarizado/a con metodologías Agile-Scrum y otras prácticas de desarrollo ágil. También he tenido el privilegio de liderar equipos de desarrollo, lo que me ha permitido demostrar habilidades en el manejo de grupos, el logro de objetivos y la investigación autodidacta.
+                        En términos de proyectos web, he trabajado en el desarrollo de sitios web para e-commerce y también he creado páginas web personalizadas. Además, he tenido la satisfacción de impartir cursos de capacitación en FrontEnd, compartiendo mis conocimientos y habilidades con otros profesionales.
+                        <br />
+                        Además de mi experiencia como Desarrollador Web, también cuento con una sólida experiencia en ventas y atención al cliente, lo cual me ha brindado habilidades destacadas en comunicación y un enfoque centrado en el cliente. Aunque esta experiencia no está directamente relacionada con el puesto de Desarrollador, creo firmemente que estas habilidades enriquecen mi capacidad para colaborar eficazmente en equipos y comprender las necesidades de los usuarios.
+                        Actualmente, me encuentro cursando el programa Codo a Codo para Python Developer y tengo previsto iniciar una tecnicatura en Desarrollo de Software en los Institutos de Formación Profesional de la Ciudad, con el fin de consolidar los conocimientos adquiridos a lo largo de mi trayectoria.
+                        <br />
+                        Sé que este camino apenas comienza, pero estoy emocionado y motivado para seguir aprendiendo, creciendo y mejorando como profesional. Me encantaría tener la oportunidad de contarte más sobre mi experiencia y cómo puedo contribuir al éxito de tu equipo.
+                        <br />
+                        ¡Muchas gracias!
+                    </h2>
                 </div>
                 <div className="login btn-login">
                     <button className="button" onClick={handleOnCLick}>
