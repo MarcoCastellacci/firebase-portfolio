@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles/styles.css'
 import './styles/index.css';
@@ -16,7 +15,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<LoginView />} />
       <Route path="/login" element={<LoginView />} />
       <Route path='/dashboard' element={<DashboardView />} />
       <Route path='/dashboard/profile' element={<ProfileEditView />} />
