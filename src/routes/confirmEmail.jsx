@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import AuthProvider from "../components/authProvider";
 import { ConfirmEmail, UpdateUser } from "../firebase/firebase";
+import LoaderAnimation from "../components/loader";
+import DashWrapper from "../components/dashboardWrapper";
 
 export default function ConfirmEmailView() {
 
@@ -47,25 +49,38 @@ export default function ConfirmEmailView() {
             }
         }
     }
-
+    console.log(currentUser);
     if (state === 3 || state === 5) {
         return <>
-            <div>
-                <h1>Bienvenido a mi Portfolio {currentUser.displayName}</h1>
-                <p>Porfavor Confirma tu email para continuar</p>
-                {state === 5 ? <p>El correo registrado ya Existe</p> : ""}
-                <div>
-                    <input type="text" onChange={handleInputEmail} /></div>
-            </div >
-            <div><button onClick={handleContinuar}> Continuar </button></div>
+            <DashWrapper>
+                <div className="bg-container confirm-email">
+                    <div className="img-logo">
+                        <img src="https://i.imgur.com/oYuETeq.png" alt="Logo de mi Web" />
+                    </div>
+                    <div className="confirm-txt">
+                        <h1>Bienvenido a mi Portfolio {currentUser.displayName}</h1>
+                        {state === 5 ? <p>El correo registrado ya Existe</p> : ""}
+                        <div className="input-confirm">
+                            <p>Porfavor Confirma tu email para continuar</p>
+                            <input type="text" onChange={handleInputEmail} />
+                        </div>
+                    </div>
+                    <div>
+                        <button onClick={handleContinuar}> Continuar </button>
+                    </div>
+                </div>
+            </DashWrapper>
         </>
     }
 
     if (state === 6) {
         return <>
-            <div>
+            <div className="bg-container confirm-email">
+                <h2>Muchas Gracias {currentUser.displayName}</h2>
                 <h2>Ya puedes Continuar explorando Mi Portfolio</h2>
-                <Link to={'/dashboard'}>Continuar</Link>
+                <button className="link-btn">
+                    <Link className="link" to={'/dashboard'}>Continuar</Link>
+                </button>
             </div >
         </>
     }
@@ -74,7 +89,8 @@ export default function ConfirmEmailView() {
             <AuthProvider
                 onUserLoggedIn={handleUserLoggedIn}
                 onUserNotRegister={handleUserNotRegister}
-                onUserNotLoggedIn={handleUserNotLoggedIn}>Confirm View
+                onUserNotLoggedIn={handleUserNotLoggedIn}>
+                <LoaderAnimation />
             </AuthProvider>
         </>
     )

@@ -7,8 +7,10 @@ import { v4 as uuidv4 } from "uuid";
 import DashWrapper from "../components/dashboardWrapper";
 import { DeleteProyect, UpdateProyect, getKnwoledge, getProyects, insertNewInfo } from "../firebase/firebase";
 import Proyects from "../components/proyects";
-import ProyectsPages from "../routes/proyectsPages";
+import ProyectsPages from "../components/proyectsPages";
 import LoaderAnimation from "../components/loader";
+import TechnologiesPage from '../components/technologies';
+
 import '../styles/formularios.css'
 
 
@@ -33,8 +35,8 @@ export default function DashboardView() {
         async function getData() {
             const resProyects = await getProyects(categorie)
             const resTechs = await getKnwoledge(categorie)
-            console.log(resProyects);
-            console.log(resTechs);
+            // console.log(resProyects);
+            // console.log(resTechs);
             setProyects([...resProyects])
             setTechnologies([...resTechs])
         }
@@ -49,15 +51,17 @@ export default function DashboardView() {
         setState(2)
         const resProyects = await getProyects(categorie)
         const resTechs = await getKnwoledge(categorie)
-        console.log(resProyects);
-        console.log(resProyects);
         setProyects([...resProyects])
         setTechnologies([...resTechs])
+        // console.log(resProyects);
+        // console.log(resTechs);
     }
     async function handleUserNotRegister() {
         setState(2)
         const resProyects = await getProyects(categorie)
         const resTechs = await getKnwoledge(categorie)
+        // console.log(resProyects);
+        // console.log(resTechs);
         setProyects([...resProyects])
         setTechnologies([...resTechs])
     }
@@ -80,12 +84,11 @@ export default function DashboardView() {
     }
 
     function handleOnSubmit(e) {
-        console.log(e);
+        // console.log(e);
         e.preventDefault();
         addNewData()
     }
 
-    console.log(categorie);
     function addNewData() {
         if (title !== "" && url !== "" && imageUrl !== "" && description !== "" && categorie !== "") {
             const newData = {
@@ -96,24 +99,27 @@ export default function DashboardView() {
                 description: description,
                 categorie: categorie
             };
-            console.log(newData);
+            // console.log(newData);
             const res = insertNewInfo(newData);
-            console.log(res);
+            // console.log(res);
             newData.docId = res.id;
             setTitle("");
             setUrl("");
             setImageUrl("");
             setDescription("");
             setCategorie("");
-            setTechnologies([...technologies, newData])
-            setProyects([...proyects, newData])
+            if (newData.categorie === "proyects") {
+                setProyects([...proyects, newData])
+            } else {
+                setTechnologies([...technologies, newData])
+            }
             // console.log(proyects);
         }
     }
 
     function handleOnChange(e) {
         const value = e.target.value
-        console.log(e);
+        // console.log(e);
         if (e.target.name === "title") {
             setTitle(value)
         }
@@ -137,9 +143,6 @@ export default function DashboardView() {
         setProyects([...tmp])
     }
 
-    // Crear y armar las funciones para el borrado y actualizado de las tecnologias.
-    // Empezar a mostrar los archivos con el "filtro de categoria y no el UID"
-
     async function handleUpdateProyect(docId, title, url, imageUrl, description, categorie) {
         const proyect = proyects.find(item => item.docId === docId)
         proyect.title = title;
@@ -150,6 +153,10 @@ export default function DashboardView() {
 
         await UpdateProyect(docId, proyect)
     }
+
+    // Crear y armar las funciones para el borrado y actualizado de las tecnologias.
+    // Empezar a mostrar los archivos con el "filtro de categoria y no el UID"
+
     if (adminPermisison) {
         return (<>
             <div className="bg-container">
@@ -169,7 +176,7 @@ export default function DashboardView() {
                                 <input placeholder="technologies o proyectos" className="input-form" name="categorie" onChange={handleOnChange} type="text" />
                             </div>
                             <div className="form">
-                                <label htmlFor="imageUrl" className="input-border">Nombre del Pryecto</label>
+                                <label htmlFor="imageUrl" className="input-border">Url de la Imagen</label>
                                 <input placeholder="Url de la imagen" className="input-form" name="imageUrl" onChange={handleOnChange} type="text" />
                             </div>
 
@@ -182,10 +189,17 @@ export default function DashboardView() {
                                 <input className="btn-submit" type="submit" value="Crear Nuevo Proyecto" />
                             </div>
                         </form>
+                        <h1 className="titulos-dash">Proyectos</h1>
                         {proyects?.map((proyect, index) => (
                             <div key={index}>
-                                <Proyects key={proyect.docId} docId={proyect.docId} url={proyect.url} title={proyect.title} categoria={proyect.categoria} onDelete={handleDeleteProyect} onUpdate={handleUpdateProyect} imageUrl={proyect.imageUrl} description={proyect.description} />
+                                <Proyects key={proyect.docId} docId={proyect.docId} url={proyect.url} title={proyect.title} categoria={proyect.categorie} onDelete={handleDeleteProyect} onUpdate={handleUpdateProyect} imageUrl={proyect.imageUrl} description={proyect.description} />
                             </div>))}
+                        <h1 className="titulos-dash">Tecnologias y Herramientas</h1>
+                        {technologies?.map((technique, index) => (
+                            <div className="techno" key={index}>
+                                <Proyects key={technique.docId} docId={technique.docId} url={technique.url} title={technique.title} categoria={technique.categorie} onDelete={handleDeleteProyect} onUpdate={handleUpdateProyect} imageUrl={technique.imageUrl} description={technique.description} />
+                            </div>
+                        ))}
                     </DashWrapper>
                 </div>
             </div>
@@ -198,6 +212,11 @@ export default function DashboardView() {
                     {proyects?.map((proyect, index) => (
                         <div key={index}>
                             <ProyectsPages key={proyect.docId} url={proyect.url} title={proyect.title} imageUrl={proyect.imageUrl} description={proyect.description} />
+                        </div>
+                    ))}
+                    {technologies?.map((technique, index) => (
+                        <div key={index}>
+                            <TechnologiesPage key={technique.docId} title={technique.title} imageUrl={technique.imageUrl} description={technique.description} />
                         </div>
                     ))}
                 </div>

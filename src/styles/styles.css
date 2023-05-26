@@ -1,4 +1,4 @@
-body {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -6,6 +6,9 @@ body {
 
 /* Home */
 .home-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     align-items: center;
     min-height: 100vh;
@@ -18,7 +21,6 @@ body {
 }
 
 /* Login Page */
-
 .btn-login {
     height: 50%;
     display: flex;
@@ -80,7 +82,6 @@ body {
     flex-direction: column;
 }
 
-
 .description-profile {
     height: 50%;
     width: 100%;
@@ -107,7 +108,7 @@ body {
 }
 
 sub {
-font-size: 22px;
+    font-size: 22px;
 }
 
 .nombre-cnotenedor {
@@ -232,8 +233,41 @@ font-size: 22px;
     }
 }
 
-/* Detail */
+/* Confirm Email Page */
+.confirm-email {
+    height: 100vh;
+    color: #989898;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.confirm-email h2 {
+    margin: .5rem;
+}
+
+.confirm-txt {
+    margin: 1.5rem;
+}
+
+.input-confirm {
+    margin: 1.5rem;
+}
+
+.img-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 2.5rem;
+}
+
+.img-logo img {
+    width: 10%;
+}
+
+/* Detail */
 .details-container {
     display: flex;
     flex-direction: column;
@@ -251,9 +285,53 @@ font-size: 22px;
     font-size: 2rem;
 }
 
+nav {
+    background: url('../Assets/banner-fondo-portfolio.gif');
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: solid 10px hsla(120, 97%, 14%, 0.4);
+}
+
+ul {
+    width: 100%;
+    font-family: 'Playfair Display SC', serif;
+    display: flex;
+    gap: 72px;
+    margin: 1.5rem;
+    list-style: none;
+}
+
+
+ul li .navbar-dash {
+    width: 100%;
+    font-size: 1vw;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: rgb(158, 194, 241);
+    padding: 10px;
+    transition: 0.5s ease;
+}
+
+ul:hover li .navbar-dash {
+    color: rgb(92, 146, 97);
+}
+
+ul:hover li .navbar-dash:not(:hover) {
+    color: rgb(158, 194, 241);
+    opacity: 0.3;
+    filter: blur(1px);
+}
+
 .link {
     text-decoration: none;
-    color: #fff;
+    color: rgb(170, 155, 255);
     font-size: 1.5rem;
     transition: all 0.3s ease-in-out;
     margin: 0 .5rem;
@@ -261,6 +339,10 @@ font-size: 22px;
 
 .link:hover {
     color: rgb(80, 124, 113);
+}
+
+.link-btn:hover {
+    box-shadow: 10px 10px 10px 1px rgba(80, 124, 113, 0.7);
 }
 
 /* Skills */
@@ -339,7 +421,6 @@ font-size: 22px;
 
 
 /* Hover states */
-
 .card:hover .card-description {
     transform: translateY(100%);
 }
@@ -347,35 +428,4 @@ font-size: 22px;
 .card-description:hover {
     transform: translateY(100%);
     margin-bottom: auto !important;
-}
-
-/* Proyecst pages Edit */
-
-.img-proyect {
-    width: 30%;
-    border-radius: 20px;
-}
-
-.btn-delete {
-    height: 10%;
-
-}
-
-.proyect-profile {
-    display: flex;
-    justify-content: center;
-    color: #989898;
-    flex-wrap: wrap;
-}
-
-.proyect-profile div {
-    margin: .5rem;
-}
-
-.proyect-link {
-    margin: .5rem;
-}
-
-.proyect-link img {
-    margin: .5rem;
 }

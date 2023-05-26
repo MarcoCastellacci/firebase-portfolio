@@ -108,7 +108,6 @@ export async function getUserInfo(uid) {
     try {
         const docRef = doc(db, "users", uid)
         const document = await getDoc(docRef)
-
         return document.data();
     } catch (error) {
         console.error(error);
@@ -135,11 +134,10 @@ export async function getProyects(categorie) {
     const proyects = []
     try {
         const collectionRef = collection(db, "proyects")
-        const q = query(collectionRef, where("categorie", "==", categorie))
-        const querySnapshot = await getDocs(q)
-
+        const querySnapshot = await getDocs(collectionRef)
         querySnapshot.forEach(doc => {
             const proyect = { ...doc.data() }
+            // console.log(doc);
             proyect.docId = doc.id
             proyects.push(proyect)
         })
@@ -152,10 +150,8 @@ export async function getProyects(categorie) {
 export async function getKnwoledge(categorie) {
     const technologies = []
     try {
-        const collectionRef = collection(db, "tech")
-        const q = query(collectionRef, where("categorie", "==", categorie))
-        const querySnapshot = await getDocs(q)
-
+        const collectionRef = collection(db, "technologies")
+        const querySnapshot = await getDocs(collectionRef)
         querySnapshot.forEach(doc => {
             const tech = { ...doc.data() }
             tech.docId = doc.id

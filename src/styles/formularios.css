@@ -1,24 +1,26 @@
 .input {
     width: 60%;
     outline: none;
+    caret-color: #3f3f3f;
+    background-color: #212121;
     font-size: 16px;
     border-radius: 5px;
     padding-left: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid #007a4b;
     border-bottom-width: 2px;
     transition: all 0.3s ease;
 }
 
 .input:valid {
-    border-color: #00ff2a;
-    color: #00ff2a;
-    box-shadow: 2px 2px 8px 1px #00ff2a;
+    border-color: #0ba124;
+    color: #0ba124;
+    box-shadow: 2px 2px 8px 1px #149128;
 }
 
 .input:invalid {
-    border-color: #ff0000;
-    color: #ff0000;
-    box-shadow: 2px 2px 8px 1px #ff0000;
+    border-color: #149128;
+    color: #21ad05;
+    box-shadow: 2px 2px 8px 1px #149161;
     /* translate: -8px 8px 0px 0px; */
 }
 
@@ -27,7 +29,7 @@
     color: black;
 }
 
-.input-fomr {
+.input-form {
     border: 2px solid transparent;
     outline: none;
     border-bottom: 2px solid #3f3f3f;
@@ -40,14 +42,14 @@
 }
 
 .input-form {
-    border: 2px solid #fa4753;
-    caret-color: #fa4753;
-    color: #fa4753;
+    border: 2px solid #149161;
+    caret-color: #21ad05;
+    color: #21ad05;
     box-shadow: 4px 4px 10px #070707;
 }
 
 .input-form:focus::placeholder {
-    color: #fa4753;
+    color: #21ad05;
 }
 
 .form {
@@ -70,6 +72,8 @@
 }
 
 .btn-submit {
+    width: 25%;
+    margin-top: 1.5rem;
     position: relative;
     padding: 10px 20px;
     border-radius: 7px;
@@ -79,7 +83,7 @@
     font-weight: 600;
     letter-spacing: 2px;
     background: transparent;
-    color: #7708f7;
+    color: #08f750;
     overflow: hidden;
     box-shadow: 0 0 0 0 transparent;
     -webkit-transition: all 0.2s ease-in;
@@ -140,4 +144,13 @@
     -webkit-transition: box-shadow 0.2s ease-in;
     -moz-transition: box-shadow 0.2s ease-in;
     transition: box-shadow 0.2s ease-in;
+}
+
+.titulos-dash {
+    margin: 0 40%;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    font-family: 'Playfair Display SC', serif;
+    color: rgb(143, 188, 143);
 }

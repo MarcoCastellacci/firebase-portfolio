@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import AuthProvider from "../components/authProvider";
 
 import { deleteUsersCollection, logout } from "../firebase/firebase";
+import LoaderAnimation from "../components/loader";
 
 export default function SignOut() {
 
@@ -14,9 +15,16 @@ export default function SignOut() {
                 await logout();
                 navigate("/login");
             }}
+            onUserNotRegister={async () => {
+                await deleteUsersCollection();
+                await logout();
+                navigate("/login");
+            }}
             onUserNotLoggedIn={() => {
                 navigate("/login");
             }}
-        ></AuthProvider>
+        >
+            <LoaderAnimation />
+        </AuthProvider>
     );
 }
