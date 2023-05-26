@@ -54,7 +54,7 @@ export default function DashboardView() {
                     onUserLoggedIn={handleUserLoggedIn}
                     onUserNotRegister={handleUserNotRegister}
                     onUserNotLoggedIn={handleUserNotLoggedIn}>
-                    <LoaderAnimation></LoaderAnimation>
+                    <LoaderAnimation/>
                 </AuthProvider>
             </>
         )

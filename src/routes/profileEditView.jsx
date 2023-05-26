@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import AuthProvider from "../components/authProvider";
 import DashWrapper from "../components/dashboardWrapper";
 import { UpdateUser, getProfilePhoto, setProfilePhoto } from "../firebase/firebase";
+import LoaderAnimation from "../components/loader";
 
 
 export default function ProfileEditView() {
@@ -58,6 +59,7 @@ export default function ProfileEditView() {
             onUserLoggedIn={handleUserLoggedIn}
             onUserNotRegister={handleUserNotRegister}
             onUserNotLoggedIn={handleUserNotLoggedIn}>
+            <LoaderAnimation />
         </AuthProvider>
     }
     return (
@@ -75,7 +77,6 @@ export default function ProfileEditView() {
                     </div>
                 </div>
             </DashWrapper>
-
         </>
     )
 }

@@ -14,7 +14,7 @@ body {
 
 .bg-container {
     background: url('../Assets/fondo.gif');
-    background-blend-mode: multiply, multiply
+    background-blend-mode: multiply, multiply;
 }
 
 /* Login Page */
@@ -74,11 +74,24 @@ body {
     font-size: 24px;
 }
 
+.title-banner-portfolio {
+    display: flex;
+    justify-content: center !important;
+    flex-direction: column;
+}
+
+
 .description-profile {
     height: 50%;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: center !important;
+    flex-direction: column;
+}
+
+.contenedor-txt-description {
+    display: flex;
+    justify-self: center !important;
 }
 
 .description-txt-profile {
@@ -90,9 +103,134 @@ body {
     color: rgb(152, 152, 152);
     line-height: 2rem;
     margin-bottom: 20px;
+    margin-left: 10%;
 }
 
+sub {
+font-size: 22px;
+}
 
+.nombre-cnotenedor {
+    display: flex;
+    flex-direction: column;
+    color: #333;
+    font-family: tahoma;
+    font-size: 3rem;
+    font-weight: 100;
+    line-height: 1.5;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 5rem;
+}
+
+.nombre span {
+    width: 50%;
+    font-size: 40px;
+    position: absolute;
+    top: 100px;
+}
+
+.message {
+
+    background-color: rgb(4, 78, 38);
+    color: rgb(152, 152, 152);
+    display: block;
+    font-weight: 900;
+    overflow: hidden;
+    position: absolute;
+    padding-left: 0.5rem;
+    top: 0.2rem;
+    left: 200px;
+    animation: openclose 5s ease-in-out infinite;
+}
+
+.word1,
+.word2,
+.word3 {
+    font-family: tahoma;
+}
+
+@keyframes openclose {
+    0% {
+        top: 0.2rem;
+        width: 0;
+    }
+
+    5% {
+        width: 0;
+    }
+
+    15% {
+        width: 70%;
+    }
+
+    30% {
+        top: 0.2rem;
+        width: 70%;
+    }
+
+    33% {
+        top: 0.2rem;
+        width: 0;
+    }
+
+    35% {
+        top: 0.2rem;
+        width: 0;
+    }
+
+    38% {
+        top: -4.5rem;
+
+    }
+
+    48% {
+        top: -4.5rem;
+        width: 70%;
+    }
+
+    62% {
+        top: -4.5rem;
+        width: 70%;
+    }
+
+    66% {
+        top: -4.5rem;
+        width: 0;
+        text-indent: 0;
+    }
+
+    71% {
+        top: -9rem;
+        width: 0;
+        text-indent: 5px;
+    }
+
+    86% {
+        top: -9rem;
+        width: 70%;
+    }
+
+    95% {
+        top: -9rem;
+        width: 70%;
+    }
+
+    98% {
+        top: -9rem;
+        width: 0;
+        text-indent: 5px;
+    }
+
+    100% {
+        top: 0;
+        width: 0;
+        text-indent: 0;
+    }
+}
 
 /* Detail */
 

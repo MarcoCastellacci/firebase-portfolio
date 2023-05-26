@@ -14,7 +14,15 @@ code {
 
 .login {
   background: url('../Assets/fondo.gif');
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-loader {
   height: 100vh;
+  background: url('../Assets/fondo.gif');
   display: flex;
   justify-content: center;
   align-items: center;

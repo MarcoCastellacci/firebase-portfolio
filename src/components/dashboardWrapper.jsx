@@ -17,7 +17,6 @@ export default function DashWrapper({ children, user }) {
     return (<>
         <div>
             <nav>
-                <div>Logo</div>
                 <Link to="/proyects">Proyectos</Link>
                 <Link to="/tecnologies">Tecnologias</Link>
                 <Link to="/kwgnoledge">Herramientas</Link>
