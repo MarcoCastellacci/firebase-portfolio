@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import AuthProvider from "../components/authProvider";
+// eslint-disable-next-line
 import { useEffect, useState } from "react";
 
 import { v4 as uuidv4 } from "uuid";
 import DashWrapper from "../components/dashboardWrapper";
-import { DeleteProyect, UpdateProyect, getProyects, insertNewProyect } from "../firebase/firebase";
+import { DeleteProyect, UpdateProyect, getKnwoledge, getProyects, insertNewInfo } from "../firebase/firebase";
 import Proyects from "../components/proyects";
 import ProyectsPages from "../routes/proyectsPages";
 import LoaderAnimation from "../components/loader";
@@ -16,20 +17,29 @@ export default function DashboardView() {
 
 
     const navigate = useNavigate()
-    // eslint-disable-next-line
     const [currentUser, setCurrentUser] = useState()
     const [state, setState] = useState(0)
     const [adminPermisison, setAdminPermission] = useState(false)
     const [title, setTitle] = useState("")
     const [url, setUrl] = useState("")
     const [imageUrl, setImageUrl] = useState("")
+    const [categorie, setCategorie] = useState("")
     const [description, setDescription] = useState("")
 
     const [proyects, setProyects] = useState([])
+    const [technologies, setTechnologies] = useState([])
 
     useEffect(() => {
-        console.log(proyects);
-    }, [proyects])
+        async function getData() {
+            const resProyects = await getProyects(categorie)
+            const resTechs = await getKnwoledge(categorie)
+            console.log(resProyects);
+            console.log(resTechs);
+            setProyects([...resProyects])
+            setTechnologies([...resTechs])
+        }
+        getData()
+    }, [categorie])
 
     async function handleUserLoggedIn(user) {
         setCurrentUser(user)
@@ -37,14 +47,23 @@ export default function DashboardView() {
             setAdminPermission(true)
         }
         setState(2)
-        const resProyects = await getProyects(user.uid)
+        const resProyects = await getProyects(categorie)
+        const resTechs = await getKnwoledge(categorie)
+        console.log(resProyects);
+        console.log(resProyects);
         setProyects([...resProyects])
+        setTechnologies([...resTechs])
     }
-    function handleUserNotRegister() {
-        navigate("/login")
+    async function handleUserNotRegister() {
+        setState(2)
+        const resProyects = await getProyects(categorie)
+        const resTechs = await getKnwoledge(categorie)
+        setProyects([...resProyects])
+        setTechnologies([...resTechs])
     }
     function handleUserNotLoggedIn() {
         navigate("/login")
+
     }
 
     if (state === 0) {
@@ -54,40 +73,47 @@ export default function DashboardView() {
                     onUserLoggedIn={handleUserLoggedIn}
                     onUserNotRegister={handleUserNotRegister}
                     onUserNotLoggedIn={handleUserNotLoggedIn}>
-                    <LoaderAnimation/>
+                    <LoaderAnimation />
                 </AuthProvider>
             </>
         )
     }
 
     function handleOnSubmit(e) {
+        console.log(e);
         e.preventDefault();
-        addProyect()
+        addNewData()
     }
 
-    function addProyect() {
-        if (title !== "" && url !== "" && imageUrl !== "" && description !== "") {
-            const newProyect = {
+    console.log(categorie);
+    function addNewData() {
+        if (title !== "" && url !== "" && imageUrl !== "" && description !== "" && categorie !== "") {
+            const newData = {
                 id: uuidv4(),
                 title: title,
                 url: url,
-                user: currentUser.uid,
                 imageUrl: imageUrl,
                 description: description,
+                categorie: categorie
             };
-            const res = insertNewProyect(newProyect);
-            newProyect.docId = res.id;
+            console.log(newData);
+            const res = insertNewInfo(newData);
+            console.log(res);
+            newData.docId = res.id;
             setTitle("");
             setUrl("");
             setImageUrl("");
             setDescription("");
-            setProyects([...proyects, newProyect])
-            console.log(proyects);
+            setCategorie("");
+            setTechnologies([...technologies, newData])
+            setProyects([...proyects, newData])
+            // console.log(proyects);
         }
     }
 
     function handleOnChange(e) {
         const value = e.target.value
+        console.log(e);
         if (e.target.name === "title") {
             setTitle(value)
         }
@@ -100,21 +126,27 @@ export default function DashboardView() {
         if (e.target.name === "description") {
             setDescription(value)
         }
+        if (e.target.name === "categorie") {
+            setCategorie(value)
+        }
     }
 
     async function handleDeleteProyect(docId) {
         await DeleteProyect(docId);
         const tmp = proyects.filter(proyect => proyect.docId !== docId);
         setProyects([...tmp])
-
     }
 
-    async function handleUpdateProyect(docId, title, url, imageUrl, description) {
+    // Crear y armar las funciones para el borrado y actualizado de las tecnologias.
+    // Empezar a mostrar los archivos con el "filtro de categoria y no el UID"
+
+    async function handleUpdateProyect(docId, title, url, imageUrl, description, categorie) {
         const proyect = proyects.find(item => item.docId === docId)
         proyect.title = title;
         proyect.url = url;
         proyect.imageUrl = imageUrl;
         proyect.description = description;
+        proyect.categorie = categorie
 
         await UpdateProyect(docId, proyect)
     }
@@ -125,21 +157,24 @@ export default function DashboardView() {
                     <DashWrapper user={currentUser} >
                         <form action="" onSubmit={handleOnSubmit} className="form-upload">
                             <div className="form">
-                                <label htmlFor="title" className="input-border">Nombre del Pryecto</label>
-                                <input placeholder="Type here" className="input-form" name="title" onChange={handleOnChange} type="text" />
+                                <label htmlFor="title" className="input-border">Nombre del Pryecto o Tech</label>
+                                <input placeholder="Nombre del Proyecto o Tech" className="input-form" name="title" onChange={handleOnChange} type="text" />
                             </div>
                             <div className="form">
                                 <label htmlFor="url" className="input-border">Url de la Web</label>
-                                <input placeholder="Type here" className="input-form" name="url" onChange={handleOnChange} type="text" />
+                                <input placeholder="Url solo para Proyectos" className="input-form" name="url" onChange={handleOnChange} type="text" />
                             </div>
-
+                            <div className="form">
+                                <label htmlFor="categorie" className="input-border">Categoria</label>
+                                <input placeholder="technologies o proyectos" className="input-form" name="categorie" onChange={handleOnChange} type="text" />
+                            </div>
                             <div className="form">
                                 <label htmlFor="imageUrl" className="input-border">Nombre del Pryecto</label>
-                                <input placeholder="Type here" className="input-form" name="imageUrl" onChange={handleOnChange} type="text" />
+                                <input placeholder="Url de la imagen" className="input-form" name="imageUrl" onChange={handleOnChange} type="text" />
                             </div>
 
                             <div className="form">
-                                <label htmlFor="description">Descripcion de la Web</label>
+                                <label htmlFor="description">Descripcion</label>
                                 <textarea type="text" name="description" cols="30" rows="10" className="descriptioon-txt input" onChange={handleOnChange} placeholder="Enter Text" required="" />
                             </div>
 
@@ -149,7 +184,7 @@ export default function DashboardView() {
                         </form>
                         {proyects?.map((proyect, index) => (
                             <div key={index}>
-                                <Proyects key={proyect.docId} docId={proyect.docId} url={proyect.url} title={proyect.title} onDelete={handleDeleteProyect} onUpdate={handleUpdateProyect} imageUrl={proyect.imageUrl} description={proyect.description} />
+                                <Proyects key={proyect.docId} docId={proyect.docId} url={proyect.url} title={proyect.title} categoria={proyect.categoria} onDelete={handleDeleteProyect} onUpdate={handleUpdateProyect} imageUrl={proyect.imageUrl} description={proyect.description} />
                             </div>))}
                     </DashWrapper>
                 </div>

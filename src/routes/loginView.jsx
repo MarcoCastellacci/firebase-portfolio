@@ -36,6 +36,7 @@ export default function LoginView() {
     //Funcion de Login Con Google
     async function handleOnCLick() {
         const googleProvider = new GoogleAuthProvider();
+        googleProvider.setCustomParameters({ prompt: "select_account" });
         await SingInWithGoogle(googleProvider);
 
         async function SingInWithGoogle(googleProvider) {

@@ -7,10 +7,15 @@ export default function DashWrapper({ children, user }) {
 
 
     useEffect(() => {
-        setUsername(user.displayName)
-        if (user.adminPermission) {
-            setAdminPermission(true)
+        try {
             setUsername(user.displayName)
+            if (user.adminPermission) {
+                setAdminPermission(true)
+                setUsername(user.displayName)
+            }
+            console.log(user.displayName);
+        } catch (error) {
+            console.error(error);
         }
     }, [user])
 

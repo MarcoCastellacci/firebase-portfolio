@@ -3,30 +3,20 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
 import {
     getFirestore,
-    // eslint-disable-next-line
     collection,
-    // eslint-disable-next-line
     addDoc,
-    // eslint-disable-next-line
     getDocs,
     doc,
     getDoc,
-    // eslint-disable-next-line
     query,
-    // eslint-disable-next-line
     where,
-    // eslint-disable-next-line
     setDoc,
-    // eslint-disable-next-line
     deleteDoc,
 } from 'firebase/firestore';
 import {
     getStorage,
-    // eslint-disable-next-line
     ref,
-    // eslint-disable-next-line
     uploadBytes,
-    // eslint-disable-next-line
     getDownloadURL,
     // eslint-disable-next-line
     getBytes
@@ -47,7 +37,7 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const db = getFirestore(app);
-// eslint-disable-next-line
+
 const storage = getStorage(app);
 
 export async function userExist(uid) {
@@ -125,21 +115,27 @@ export async function getUserInfo(uid) {
     }
 }
 
-export async function insertNewProyect(proyect) {
+export async function insertNewInfo(data) {
     try {
-        const docRef = collection(db, "proyects")
-        const res = await addDoc(docRef, proyect)
-        return res
+        if (data.categorie === "proyects") {
+            const docRef = collection(db, "proyects")
+            const res = await addDoc(docRef, data)
+            return res
+        } else if (data.categorie === "technologies") {
+            const docRef = collection(db, "technologies")
+            const res = await addDoc(docRef, data)
+            return res
+        }
     } catch (error) {
         console.error(error);
     }
 }
 
-export async function getProyects(uid) {
+export async function getProyects(categorie) {
     const proyects = []
     try {
         const collectionRef = collection(db, "proyects")
-        const q = query(collectionRef, where("user", "==", uid))
+        const q = query(collectionRef, where("categorie", "==", categorie))
         const querySnapshot = await getDocs(q)
 
         querySnapshot.forEach(doc => {
@@ -151,7 +147,24 @@ export async function getProyects(uid) {
     } catch (error) {
         console.error(error);
     }
+}
 
+export async function getKnwoledge(categorie) {
+    const technologies = []
+    try {
+        const collectionRef = collection(db, "tech")
+        const q = query(collectionRef, where("categorie", "==", categorie))
+        const querySnapshot = await getDocs(q)
+
+        querySnapshot.forEach(doc => {
+            const tech = { ...doc.data() }
+            tech.docId = doc.id
+            technologies.push(tech)
+        })
+        return technologies
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 export async function UpdateProyect(docId, proyect) {
@@ -169,6 +182,32 @@ export async function DeleteProyect(docId) {
         const docRef = doc(db, "proyects", docId)
         const res = await deleteDoc(docRef)
         return res
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
+export async function DeleteTechs(docId) {
+    try {
+        const docRef = doc(db, "technologies", docId)
+        const res = await deleteDoc(docRef)
+        return res
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function deleteUsersCollection() {
+    try {
+        const usersCollectionRef = collection(db, "users"); // Ajusta la ruta de la colección según tu estructura
+        // Obtiene todos los documentos dentro de la colección
+        const querySnapshot = await getDocs(usersCollectionRef);
+
+        // Elimina cada documento de la colección
+        const deletePromises = querySnapshot.docs.map((doc) => deleteDoc(doc.ref));
+        await Promise.all(deletePromises);
+        return true; // Opcionalmente, puedes devolver un indicador de éxito
     } catch (error) {
         console.error(error);
     }

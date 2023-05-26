@@ -18,7 +18,7 @@ export default function AuthProvider({ children, onUserLoggedIn, onUserNotLogged
                 const isRegistered = await userExist(user.uid);
                 if (isRegistered) {
                     const userInfo = await getUserInfo(user.uid)
-                    if (userInfo.processCompleted) {
+                    if (userInfo.email === "marco.castellacci87@gmail.com" && userInfo.processCompleted) {
                         onUserLoggedIn(userInfo);
                     } else {
                         onUserNotRegister(userInfo);
@@ -32,7 +32,8 @@ export default function AuthProvider({ children, onUserLoggedIn, onUserNotLogged
                         adminPermission: false,
                         processCompleted: false,
                     })
-                    onUserNotRegister(user);
+                    // console.log(user);
+                    // onUserNotRegister(user);
                 }
             } else {
                 onUserNotLoggedIn(user);

@@ -3,12 +3,14 @@ import '../styles/styles.css'
 
 
 
-export default function Proyects({ docId, title, url, imageUrl, description, onDelete, onUpdate }) {
+export default function Proyects({ docId, title, url, imageUrl, description, onDelete, categoria, onUpdate }) {
     const [currentTitle, setCurrentTitle] = useState(title);
     const [currentUrl, setCurrentUrl] = useState(url);
+    const [currentCategorie, setCurrentCategorie] = useState(categoria)
 
     const [editTitle, setEditTitle] = useState(false);
     const [editUrl, setEditUrl] = useState(false);
+    const [editCategorie, setEditCategorie] = useState(false)
 
     const titleRef = useRef(null);
     const urlRef = useRef(null)
@@ -31,10 +33,15 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
     function handleEditTitle() {
         setEditTitle(true)
     }
+    function handleEditCategorie() {
+        setEditCategorie(true)
+    }
+
 
     function handleDeleteProyect() {
         onDelete(docId)
     }
+
 
     function handleChangeTitle(e) {
         setCurrentTitle(e.target.value)
@@ -42,13 +49,22 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
     function handleChangeUrl(e) {
         setCurrentUrl(e.target.value)
     }
+    function handleChangeCategorie(e) {
+        setCurrentCategorie(e.target.value)
+    }
+
+
     function handleBlurUrl(e) {
         setEditUrl(false)
-        onUpdate(docId, currentTitle, currentUrl, imageUrl, description)
+        onUpdate(docId, currentTitle, currentUrl, currentCategorie, imageUrl, description)
     }
     function handleBlurTitle(e) {
         setEditTitle(false)
-        onUpdate(docId, currentTitle, currentUrl, imageUrl, description)
+        onUpdate(docId, currentTitle, currentUrl, currentCategorie, imageUrl, description)
+    }
+    function handleBlurCategorie(e) {
+        setEditCategorie(false)
+        onUpdate(docId, currentTitle, currentUrl, currentCategorie, imageUrl, description)
     }
 
     return (
@@ -67,6 +83,14 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
                         <input ref={urlRef} value={currentTitle} onChange={handleChangeTitle} onBlur={handleBlurTitle} />
                     </>) : (<>
                         <button onClick={handleEditTitle}>Edit</button>
+                        <h2>{title}</h2>
+                    </>
+                    )}
+                    </div>
+                    <div>{editCategorie ? (<>
+                        <input ref={urlRef} value={currentCategorie} onChange={handleChangeCategorie} onBlur={handleBlurCategorie} />
+                    </>) : (<>
+                        <button onClick={handleEditCategorie}>Edit</button>
                         <h2>{title}</h2>
                     </>
                     )}
