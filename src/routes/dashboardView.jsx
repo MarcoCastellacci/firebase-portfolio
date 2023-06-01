@@ -154,8 +154,6 @@ export default function DashboardView() {
         await UpdateProyect(docId, proyect)
     }
 
-    // Crear y armar las funciones para el borrado y actualizado de las tecnologias.
-    // Empezar a mostrar los archivos con el "filtro de categoria y no el UID"
 
     if (adminPermisison) {
         return (<>
@@ -209,13 +207,11 @@ export default function DashboardView() {
         <DashWrapper user={currentUser}>
             <div className="bg-container">
                 <div className="home-container">
-                    {proyects?.map((proyect, index) => (
-                        <div key={index}>
-                            <ProyectsPages key={proyect.docId} url={proyect.url} title={proyect.title} imageUrl={proyect.imageUrl} description={proyect.description} />
-                        </div>
-                    ))}
+                    <div className="proyect-container">
+                        <ProyectsPages proyects={proyects} />
+                    </div>
                     {technologies?.map((technique, index) => (
-                        <div key={index}>
+                        <div className="technos" key={index}>
                             <TechnologiesPage key={technique.docId} title={technique.title} imageUrl={technique.imageUrl} description={technique.description} />
                         </div>
                     ))}

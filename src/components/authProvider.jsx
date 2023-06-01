@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-
     onAuthStateChanged,
-
 } from "firebase/auth";
 import { RegsiterNewUser, auth, getUserInfo, userExist } from "../firebase/firebase";
 
@@ -18,7 +16,7 @@ export default function AuthProvider({ children, onUserLoggedIn, onUserNotLogged
                 const isRegistered = await userExist(user.uid);
                 if (isRegistered) {
                     const userInfo = await getUserInfo(user.uid)
-                    console.log(userInfo);
+                    // console.log(userInfo);
                     if (userInfo.email === "marco.castellacci87@gmail.com" && userInfo.processCompleted) {
                         onUserLoggedIn(userInfo);
                     } else {
@@ -33,7 +31,7 @@ export default function AuthProvider({ children, onUserLoggedIn, onUserNotLogged
                         adminPermission: false,
                         processCompleted: false,
                     })
-                    console.log(user);
+                    // console.log(user);
                     onUserNotRegister(user);
                 }
             } else {

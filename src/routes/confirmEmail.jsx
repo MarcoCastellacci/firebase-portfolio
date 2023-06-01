@@ -13,7 +13,7 @@ export default function ConfirmEmailView() {
     const [email, setEmail] = useState("");
 
     function handleUserLoggedIn(user) {
-        navigate('/dashboard')
+        navigate('/home')
     }
     function handleUserNotRegister(user) {
         setState(3)
@@ -49,7 +49,6 @@ export default function ConfirmEmailView() {
             }
         }
     }
-    console.log(currentUser);
     if (state === 3 || state === 5) {
         return <>
             <DashWrapper>
@@ -79,7 +78,7 @@ export default function ConfirmEmailView() {
                 <h2>Muchas Gracias {currentUser.displayName}</h2>
                 <h2>Ya puedes Continuar explorando Mi Portfolio</h2>
                 <button className="link-btn">
-                    <Link className="link" to={'/dashboard'}>Continuar</Link>
+                    <Link className="link" to={'/home'}>Continuar</Link>
                 </button>
             </div >
         </>

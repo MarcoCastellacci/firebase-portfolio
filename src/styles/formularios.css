@@ -154,3 +154,11 @@
     font-family: 'Playfair Display SC', serif;
     color: rgb(143, 188, 143);
 }
+
+.proyect-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}

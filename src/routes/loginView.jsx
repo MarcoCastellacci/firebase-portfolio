@@ -25,7 +25,7 @@ export default function LoginView() {
     const [state, setState] = useState(0);
 
     function handleUserLoggedIn(user) {
-        navigate('/dashboard')
+        navigate('/home')
     }
     function handleUserNotRegister(user) {
         navigate('/confirm_email')
@@ -42,7 +42,6 @@ export default function LoginView() {
         async function SingInWithGoogle(googleProvider) {
             try {
                 const res = await signInWithPopup(auth, googleProvider);
-                console.log(res);
             } catch (error) {
                 console.error(error);
             }
@@ -56,7 +55,7 @@ export default function LoginView() {
                         <img src="https://i.imgur.com/oYuETeq.png" alt="Foto de mi Perfil" />
                     </div>
                     <div className="title-portfolio">
-                        <h1>Portfolio Profesional </h1>
+                        <h1>Mi Portfolio </h1>
                         <sub>Desarrollador</sub>
                     </div>
                 </div>

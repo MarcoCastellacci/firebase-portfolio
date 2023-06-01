@@ -5,8 +5,8 @@ import '../styles/tecnologies.css';
 export default function Technos({ key, title, imageUrl, description }) {
 
     return (<>
-        <div className="card-container bg-container">
-            <div className="card" key={key}>
+        <div className="card-container bg-container" key={key}>
+            <div className="card">
                 <div className="img-content">
                     <img src={imageUrl} alt={`logo de la tecnologia ${title}`} />
                 </div>

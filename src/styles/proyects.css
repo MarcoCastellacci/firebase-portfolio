@@ -1,0 +1,16 @@
+.img-proyect {
+    border-radius: 30px;
+    width: 50% !important;
+    margin: .5rem 20%;
+}
+
+.link {
+    text-decoration: none;
+    color: rgb(26, 173, 173);
+    font-size: 1em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.link:hover{
+    color: rgb(26, 173, 173) !important;
+}

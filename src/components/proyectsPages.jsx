@@ -1,57 +1,69 @@
-import React from "react";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import LiveHelpTwoToneIcon from '@mui/icons-material/LiveHelpTwoTone';
+import { Button, CardActionArea, CardActions } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { teal } from '@mui/material/colors';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
+import '../styles/proyects.css'
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+const ColorButton = styled(Button)(({ theme }) => ({
+    color: theme.palette.getContrastText(teal[600]),
+    borderColor: teal[600],
+    '&:hover': {
+        backgroundColor: teal[800],
+        color: teal[300],
+    },
+}));
 
-import "../styles/pagesStyle.css";
-
-// import required modules
-import { Autoplay, Parallax, Pagination, Navigation } from "swiper";
-
-export default function ProyectsPages({title, url, imageUrl, description, }) {
+export default function ProyectsPages({ proyects }) {
 
     return (
-        <>
-            <Swiper
-                style={{
-                    "--swiper-navigation-color": "#fff",
-                    "--swiper-pagination-color": "#fff",
-                }}
-                speed={600}
-                parallax={true}
-                pagination={{
-                    clickable: true,
-                }}
-                autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                }}
-                navigation={true}
-                modules={[Parallax, Pagination, Navigation, Autoplay]}
-                className="mySwiper"
-            >
-                <SwiperSlide>
-                    <div className="title" data-swiper-parallax="-300">
-                        {title}
-                    </div>
-                    <div className="subtitle" data-swiper-parallax="-200">
-                        <a href={url} target="_blank" rel="noopener noreferrer">{title}</a>
-                    </div>
-                    <div className="text" data-swiper-parallax="-100">
-                        <p>
-                            {description}
-                        </p>
-                        <div className="img-carrousel">
-                            <img src={imageUrl} alt={title} />
-                        </div>
-                    </div>
-                </SwiperSlide>
-            </Swiper>
+        <>{proyects.map((proyect, index) =>
+            <Card key={index} sx={{ margin: ".5rem", backgroundColor: "transparent", color: "rgb(94, 119, 94)" }}>
+                <CardActionArea>
+                    <CardMedia
+                        className='img-proyect'
+                        component="img"
+                        image={proyect.imageUrl}
+                        alt={proyect.title}
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                            {proyect.title}
+                        </Typography>
+                        <Typography variant="body2" color="rgb(152, 152, 152)">
+                            {proyect.description ? (proyect.description.length > 40 ? proyect.description.substring(0, 40) + '...' : proyect.description) : ''}
+                        </Typography>
+                        <ColorButton>
+                            <LiveHelpTwoToneIcon onClick={() => {
+                                Swal.fire({
+                                    title: `${proyect.title}`,
+                                    text: `${proyect.description}`,
+                                    width: 600,
+                                    padding: '3em',
+                                    color: 'rgb(94, 119, 94)',
+                                    icon: 'info',
+                                    backdrop: `rgba(152, 152, 152,0.4)`
+                                })
+                            }}
+                            aria-label="show more" />
+                        </ColorButton>
+                    </CardContent>
+                    <CardActions>
+                        <ColorButton size="medium" variant="outlined" sx={{ color: "teal[300]" }}>
+                            <Link to={proyect.url} target="_blank" className='link'>
+                                Ver Mas
+                            </Link>
+                        </ColorButton>
+                    </CardActions>
+                </CardActionArea>
+            </Card>)}
         </>
     );
 }

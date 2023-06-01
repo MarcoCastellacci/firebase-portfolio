@@ -2,6 +2,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    /*  */
+}
+
+body {
+    background: url('../Assets/fondo.gif');
+    background-blend-mode: multiply, multiply;
 }
 
 /* Home */
@@ -11,11 +17,12 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
     align-items: center;
-    min-height: 100vh;
+    height: 100%;
     width: 100%;
 }
 
 .bg-container {
+
     background: url('../Assets/fondo.gif');
     background-blend-mode: multiply, multiply;
 }
@@ -299,7 +306,7 @@ nav {
 }
 
 ul {
-    width: 100%;
+    width: 50%;
     font-family: 'Playfair Display SC', serif;
     display: flex;
     gap: 72px;
@@ -345,87 +352,7 @@ ul:hover li .navbar-dash:not(:hover) {
     box-shadow: 10px 10px 10px 1px rgba(80, 124, 113, 0.7);
 }
 
-/* Skills */
-.skills-container {
-    display: flex;
-    flex-direction: row !important;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
-    background-blend-mode: multiply, multiply;
-}
-
-.skills-card {
-    margin: 2rem 1rem;
-}
-
-/* From uiverse.io by @alexruix */
-.card {
-    height: 254px;
-    width: 25%;
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-    border-radius: 1em;
-    box-shadow: 0 0 20px 8px #29387a;
-    z-index: 1;
-
-}
-
-/*Image*/
-.card-image {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
-    background: #0a3394;
-    background: linear-gradient(to top, #021e5f, #234885);
-    border-radius: 10px;
-}
-
-.card-image img {
-    height: 100%;
-    width: 100%;
-    border-radius: 10px;
-}
-
-/*Description */
-.card-description {
-    display: flex;
-    position: absolute;
-    gap: 1em;
-    flex-direction: column;
-    background-color: #7e92d4;
-    height: 70%;
-    bottom: 0;
-    border-radius: 1em 1em 0 0;
-    transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
-    padding: 1rem;
-    border-radius: 10px;
-}
-
-/*Text*/
-.text-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin: 0;
-}
-
-.text-body {
-    font-size: 1rem;
-    line-height: 1rem;
-    margin-top: 0;
-}
-
-
-/* Hover states */
-.card:hover .card-description {
-    transform: translateY(100%);
-}
-
-.card-description:hover {
-    transform: translateY(100%);
-    margin-bottom: auto !important;
+.nav-portfolio {
+    font-family: 'Expletus Sans', cursive;
+    width: 50%;
 }

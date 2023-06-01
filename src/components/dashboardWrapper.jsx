@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function DashWrapper({ children, user }) {
     const [username, setUsername] = useState("")
     const [adminPermission, setAdminPermission] = useState(false)
-
+    const location = useLocation();
 
     useEffect(() => {
         try {
-            console.log(user);
+            // console.log(user);
             setUsername(user.displayName)
             if (user.adminPermission) {
                 setAdminPermission(true)
                 setUsername(user.displayName)
             }
-            console.log(user.email);
         } catch (error) {
             console.error(error);
         }
@@ -25,22 +24,19 @@ export default function DashWrapper({ children, user }) {
             <nav>
                 <ul>
                     <li>
-                        <Link className="navbar-dash" to="/proyects">Proyectos</Link>
-                    </li>
-                    <li>
-                        <Link className="navbar-dash" to="/tecnologies">Tecnologias</Link>
-                    </li>
-                    <li>
-                        <Link className="navbar-dash" to="/kwgnoledge">Herramientas</Link>
+                        <Link className="navbar-dash" to={location.pathname === "/habilidades" ? "/home" : "/habilidades"}>{location.pathname === "/habilidades" ? "Home" : "Habilidades"}</Link>
                     </li>
                     <li>
                         <Link className="navbar-dash" to="/signout">Sign Out</Link>
                     </li>
                     <li>
                         {/* Solamente al usuario Adminitrasdor */}
-                        {adminPermission ? <Link className="navbar-dash" to={`/u/${username}`}>Perfil Admin</Link> : <Link className="navbar-dash" to="/dashboard">Perfil Admin</Link>}
+                        {adminPermission ? <Link className="navbar-dash" to={`/u/${username}`}>Perfil Admin</Link> : null}
                     </li>
                 </ul>
+                <div className="title-portfolio nav-portfolio">
+                    <h1>Marco Castellacci</h1>
+                </div>
             </nav>
             <div>
                 {children}
