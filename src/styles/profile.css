@@ -1,7 +1,187 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-data {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.data {
+    text-align: center;
+    width: 50%;
+    color: rgb(143, 188, 143);
+}
+
+.img-profile {
+    margin: .5em 1rem;
+    width: 50%;
+}
+
 img {
-    width: 10%;
+    width: 25%;
+    border-radius: 100px;
 }
 
 a {
     text-decoration: none;
+}
+
+/* Contacto Form */
+/* From uiverse.io by @WhiteNervosa */
+
+.contact-form {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-blend-mode: multiply, multiply;
+}
+
+.input-text {
+    width: 100%;
+    height: 2rem;
+    margin-bottom: 1rem;
+}
+
+.input-mail {
+    width: 100%;
+    height: 2rem;
+    margin-bottom: 1rem;
+}
+
+.input-tel {
+    width: 100%;
+    height: 2rem;
+    margin-bottom: 1rem;
+}
+
+.textarea-input {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.textarea-msj {
+    width: 100%;
+    background-color: #353535;
+    border-radius: .5em;
+    color: #e8e8e8;
+    resize: none !important;
+}
+
+.submitButton {
+    width: 20%;
+    background-color: rgb(61, 141, 63);
+    border: none;
+    color: white;
+    padding: 5px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.submitButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(61, 141, 63, 0.24), 0 17px 50px 0 rgba(61, 141, 63, 0.19);
+}
+
+
+.textInputWrapper {
+    position: relative;
+    width: 80%;
+    margin: 12px 5px;
+    --accent-color: #a3e583;
+}
+
+.textInputWrapper:before {
+    transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+}
+
+.textInputWrapper:before,
+.textInputWrapper:after {
+    content: "";
+    left: 0;
+    right: 0;
+    position: absolute;
+    pointer-events: none;
+    bottom: -1px;
+    z-index: 4;
+    width: 100%;
+}
+
+.textInputWrapper:focus-within:before {
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.textInputWrapper:before {
+    transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+}
+
+.textInputWrapper:focus-within:before {
+    border-bottom: 1px solid var(--accent-color);
+    transform: scaleX(1);
+}
+
+.textInputWrapper:focus-within:after {
+    border-bottom: 2px solid var(--accent-color);
+    transform: scaleX(1);
+}
+
+.textInputWrapper:after {
+    content: "";
+    transform: scaleX(0);
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    will-change: transform;
+    border-bottom: 2px solid var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
+.textInput::placeholder {
+    transition: opacity 250ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    opacity: 1;
+    -webkit-user-select: none;
+    color: rgba(255, 255, 255, 0.582);
+}
+
+.textInputWrapper .textInput {
+    border-radius: 5px 5px 0px 0px;
+    box-shadow: 0px 2px 5px rgb(35 35 35 / 30%);
+    max-height: 36px;
+    background-color: #252525;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 200ms;
+    transition-property: background-color;
+    color: #e8e8e8;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px;
+    width: 100%;
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+}
+
+.textInputWrapper .textInput:focus,
+.textInputWrapper .textInput:active {
+    outline: none;
+}
+
+.textInputWrapper:focus-within .textInput,
+.textInputWrapper .textInput:focus,
+.textInputWrapper .textInput:active {
+    background-color: #353535;
+}
+
+.textInputWrapper:focus-within .textInput::placeholder {
+    opacity: 0;
 }
