@@ -41,6 +41,7 @@ export default function LoginView() {
 
         async function SingInWithGoogle(googleProvider) {
             try {
+                // eslint-disable-next-line
                 const res = await signInWithPopup(auth, googleProvider);
             } catch (error) {
                 console.error(error);

@@ -19,10 +19,10 @@ root.render(
       <Route path="/" element={<LoginView />} />
       <Route path="/login" element={<LoginView />} />
       <Route path='/home' element={<DashboardView />} />
-      <Route path='/dashboard/profile' element={<ProfileEditView />} />
+      <Route path='/profile' element={<ProfileView />} />
       <Route path='/signout' element={<SignOutView />} />
       <Route path='/habilidades' element={<Habilidades />} />
-      <Route path='u/:username' element={<ProfileView />} />
+      <Route path='/profile' element={<ProfileEditView />} />
       <Route path='/confirm_email' element={<ConfirmEmail />} />
     </Routes>
   </BrowserRouter>

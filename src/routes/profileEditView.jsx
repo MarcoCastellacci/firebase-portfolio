@@ -21,7 +21,8 @@ export default function ProfileEditView() {
         setState(2)
     }
     function handleUserNotRegister(user) {
-        navigate('/login')
+        setCurrentUser(user)
+        setState(2)
     }
     function handleUserNotLoggedIn() {
         navigate('/login')

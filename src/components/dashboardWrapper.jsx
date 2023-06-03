@@ -2,17 +2,17 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 export default function DashWrapper({ children, user }) {
-    const [username, setUsername] = useState("")
+    // const [username, setUsername] = useState("")
     const [adminPermission, setAdminPermission] = useState(false)
     const location = useLocation();
 
     useEffect(() => {
         try {
             // console.log(user);
-            setUsername(user.displayName)
+            // setUsername(user.displayName)
             if (user.adminPermission) {
                 setAdminPermission(true)
-                setUsername(user.displayName)
+                // setUsername(user.displayName)
             }
         } catch (error) {
             console.error(error);
@@ -31,7 +31,7 @@ export default function DashWrapper({ children, user }) {
                     </li>
                     <li>
                         {/* Solamente al usuario Adminitrasdor */}
-                        {adminPermission ? <Link className="navbar-dash" to={`/u/${username}`}>Perfil Admin</Link> : null}
+                        {adminPermission ? <Link className="navbar-dash" to={`/profile`}>Perfil Admin</Link> : <Link className="navbar-dash" to={`/profile`}>Perfil</Link>}
                     </li>
                 </ul>
                 <div className="title-portfolio nav-portfolio">
