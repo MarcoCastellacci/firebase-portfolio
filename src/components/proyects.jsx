@@ -7,10 +7,12 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
     const [currentTitle, setCurrentTitle] = useState(title);
     const [currentUrl, setCurrentUrl] = useState(url);
     const [currentCategorie, setCurrentCategorie] = useState(categoria)
+    const [currentImageUrl, setCurrentImageUrl] = useState(imageUrl)
 
     const [editTitle, setEditTitle] = useState(false);
     const [editUrl, setEditUrl] = useState(false);
     const [editCategorie, setEditCategorie] = useState(false)
+    const [editImageUrl, setEditImageUrl] = useState(false)
 
     const titleRef = useRef(null);
     const urlRef = useRef(null)
@@ -36,6 +38,9 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
     function handleEditCategorie() {
         setEditCategorie(true)
     }
+    function handleEditImageUrl() {
+        setEditImageUrl(true)
+    }
 
 
     function handleDeleteProyect() {
@@ -52,6 +57,9 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
     function handleChangeCategorie(e) {
         setCurrentCategorie(e.target.value)
     }
+    function handleChangeImageUrl(e) {
+        setCurrentImageUrl(e.target.value)
+    }
 
 
     function handleBlurUrl(e) {
@@ -64,8 +72,14 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
     }
     function handleBlurCategorie(e) {
         setEditCategorie(false)
-        onUpdate(docId, currentTitle, currentUrl, currentCategorie, imageUrl, description)
+        onUpdate(docId, currentTitle, currentUrl, currentCategorie, currentImageUrl, description)
     }
+    function handleBlurImageUrl(e) {
+        setEditImageUrl(false)
+        onUpdate(docId, currentTitle, currentUrl, currentCategorie, currentImageUrl, description)
+    }
+
+
 
     return (
         <>
@@ -74,17 +88,25 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
                     <div className="editable-page">
                         <div className="edit">
                             <div>{editUrl ? (<>
-                                <input ref={titleRef} value={currentUrl} onChange={handleChangeUrl} onBlur={handleBlurUrl} />
+                                <input ref={urlRef} value={currentUrl} onChange={handleChangeUrl} onBlur={handleBlurUrl} />
                             </>) :
                                 (<>
                                     <button onClick={handleEditUrl}>Edit Url</button>
-                                    <a href={url} className="proyect-link"><img className="img-proyect" src={imageUrl} alt="Logo de la Tienda" /></a>
+                                    <a href={url} className="proyect-link"><h2>{url}</h2></a>
+                                </>)}
+                            </div>
+                            <div>{editImageUrl ? (<>
+                                <input ref={urlRef} value={currentImageUrl} onChange={handleChangeImageUrl} onBlur={handleBlurImageUrl} />
+                            </>) :
+                                (<>
+                                    <button onClick={handleEditImageUrl}>Edit Image</button>
+                                    <a href={imageUrl} className="proyect-link"><img className="img-proyect" src={imageUrl} alt="Logo" /></a>
                                 </>)}
                             </div>
                         </div>
                         <div className="edit">
                             <div>{editTitle ? (<>
-                                <input ref={urlRef} value={currentTitle} onChange={handleChangeTitle} onBlur={handleBlurTitle} />
+                                <input ref={titleRef} value={currentTitle} onChange={handleChangeTitle} onBlur={handleBlurTitle} />
                             </>) : (<>
                                 <button onClick={handleEditTitle}>Edit Title</button>
                                 <h2>{title}</h2>

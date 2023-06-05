@@ -59,6 +59,18 @@ export default function ProfileView() {
     //         <h2>Usuario Inexistente</h2>
     //     </div>
     // }
+    function handleGitHub() {
+        window.open('https://github.com/MarcoCastellacci', '_blank');
+    }
+    function handleInstagram() {
+        window.open('https://github.com/MarcoCastellacci', '_blank');
+    }
+    function handleTwitter() {
+        window.open('https://github.com/MarcoCastellacci', '_blank');
+    }
+    function handleWhatsapp() {
+        window.open('https://github.com/MarcoCastellacci', '_blank');
+    }
 
     console.log(currentUser);
     if (state !== 2) {
@@ -81,7 +93,9 @@ export default function ProfileView() {
                             <h1>Marco Castellacci</h1>
                             <h2>Datos</h2>
                             <h4>Titulo</h4>
-                            <a href={Cv} download>Descargar Curriculum</a>
+                            <button class="buttonDownload">
+                                <a href={Cv} download>Descargar Curriculum</a>
+                            </button>
                             {/* Datos de perfil de usuario */}
                         </div>
                     </div>
@@ -105,6 +119,29 @@ export default function ProfileView() {
                             <input type="hidden" name="_captcha" value="false" />
                             <input type="hidden" name="_template" value="box" />
                         </form>
+                    </div>
+                    <div class="main">
+                        <ul class="wrapper">
+                            <li class="icon facebook">
+                                <span class="tooltip">GitHub</span>
+                                <span><i class="fab fa-facebook-f"></i></span>
+                            </li>
+                            <li class="icon twitter">
+                                <span class="tooltip">Twitter</span>
+                                <span><i class="fab fa-twitter"></i></span>
+                            </li>
+                            <li class="icon instagram">
+                                <a class="tooltip" href="https://www.instagram.com/mac_kako87" target="_blank" rel='noreferrer'>Instagram
+                                    <span><i class="fab fa-instagram">
+                                    </i></span>
+                                </a>
+                            </li>
+                            <li class="icon whatsapp">
+                                <a href="https://api.whatsapp.com/send?phone=+541166022971" target="_blank"></a>
+                                <span class="tooltip">Whatsapp</span>
+                                <span><i class="fab fa-whatsapp"></i></span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </DashWrapper>
