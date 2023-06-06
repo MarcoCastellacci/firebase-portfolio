@@ -16,6 +16,8 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
 
     const titleRef = useRef(null);
     const urlRef = useRef(null)
+    const imageRef = useRef(null)
+    const categorieRef = useRef(null)
 
     useEffect(() => {
         if (titleRef.current) {
@@ -29,6 +31,16 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
         };
     }, [editUrl])
 
+    useEffect(() => {
+        if (imageRef.current) {
+            imageRef.current.focus()
+        };
+    }, [editImageUrl])
+    useEffect(() => {
+        if (categorieRef.current) {
+            categorieRef.current.focus()
+        };
+    }, [editCategorie])
     function handleEditUrl() {
         setEditUrl(true)
     }
@@ -64,11 +76,12 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
 
     function handleBlurUrl(e) {
         setEditUrl(false)
-        onUpdate(docId, currentTitle, currentUrl, currentCategorie, imageUrl, description)
+        onUpdate(docId, currentTitle, currentUrl, currentCategorie, currentImageUrl, description)
     }
     function handleBlurTitle(e) {
+        console.log(currentTitle);
         setEditTitle(false)
-        onUpdate(docId, currentTitle, currentUrl, currentCategorie, imageUrl, description)
+        onUpdate(docId, currentTitle, currentUrl, currentCategorie, currentImageUrl, description)
     }
     function handleBlurCategorie(e) {
         setEditCategorie(false)
@@ -96,7 +109,7 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
                                 </>)}
                             </div>
                             <div>{editImageUrl ? (<>
-                                <input ref={urlRef} value={currentImageUrl} onChange={handleChangeImageUrl} onBlur={handleBlurImageUrl} />
+                                <input ref={imageRef} value={currentImageUrl} onChange={handleChangeImageUrl} onBlur={handleBlurImageUrl} />
                             </>) :
                                 (<>
                                     <button onClick={handleEditImageUrl}>Edit Image</button>
@@ -115,7 +128,7 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
                         </div>
                         <div className="edit">
                             <div>{editCategorie ? (<>
-                                <input ref={urlRef} value={currentCategorie} onChange={handleChangeCategorie} onBlur={handleBlurCategorie} />
+                                <input ref={categorieRef} value={currentCategorie} onChange={handleChangeCategorie} onBlur={handleBlurCategorie} />
                             </>) : (<>
                                 <button onClick={handleEditCategorie}>Edit Categorie</button>
                                 <h2>{categoria}</h2>

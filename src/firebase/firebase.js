@@ -165,9 +165,15 @@ export async function getKnwoledge(categorie) {
 
 export async function UpdateProyect(docId, proyect) {
     try {
-        const docRef = doc(db, "proyects", docId)
-        const res = setDoc(docRef, proyect)
-        return res
+        if (proyect.categorie === "proyects") {
+            const docRef = doc(db, "proyects", docId)
+            const res = setDoc(docRef, proyect)
+            return res
+        } if (proyect.categorie === "technologies") {
+            const docRef = doc(db, "technologies", docId)
+            const res = setDoc(docRef, proyect)
+            return res
+        }
     } catch (error) {
         console.error(error);
     }

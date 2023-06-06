@@ -144,14 +144,28 @@ export default function DashboardView() {
     }
 
     async function handleUpdateProyect(docId, title, url, imageUrl, description, categorie) {
-        const proyect = proyects.find(item => item.docId === docId)
-        proyect.title = title;
-        proyect.url = url;
-        proyect.imageUrl = imageUrl;
-        proyect.description = description;
-        proyect.categorie = categorie
+        if (categorie === "proycets") {
+            const proyect = proyects.find(item => item.docId === docId)
+            console.log(proyects);
+            proyect.title = title;
+            proyect.url = url;
+            proyect.imageUrl = imageUrl;
+            proyect.description = description;
+            proyect.categorie = categorie
 
-        await UpdateProyect(docId, proyect)
+            await UpdateProyect(docId, proyect)
+        }
+        if (categorie === "techonologies") {
+            const techno = technologies.find(item => item.docId === docId)
+            console.log(techno);
+            techno.title = title;
+            techno.url = url;
+            techno.imageUrl = imageUrl;
+            techno.description = description;
+            techno.categorie = categorie
+
+            await UpdateProyect(docId, techno)
+        }
     }
 
 
