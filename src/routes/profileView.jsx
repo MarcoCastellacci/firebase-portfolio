@@ -59,19 +59,6 @@ export default function ProfileView() {
     //         <h2>Usuario Inexistente</h2>
     //     </div>
     // }
-    function handleGitHub() {
-        window.open('https://github.com/MarcoCastellacci', '_blank');
-    }
-    function handleInstagram() {
-        window.open('https://github.com/MarcoCastellacci', '_blank');
-    }
-    function handleTwitter() {
-        window.open('https://github.com/MarcoCastellacci', '_blank');
-    }
-    function handleWhatsapp() {
-        window.open('https://github.com/MarcoCastellacci', '_blank');
-    }
-
     console.log(currentUser);
     if (state !== 2) {
         return <AuthProvider
@@ -90,14 +77,70 @@ export default function ProfileView() {
                             <img src={ProfileImg} alt="" />
                         </div>
                         <div className='data'>
-                            <h1>Marco Castellacci</h1>
-                            <h2>Datos</h2>
-                            <h4>Titulo</h4>
+                            <h1>Desarrollador</h1>
+                            <h2>Fullstack</h2>
                             <button class="buttonDownload">
                                 <a href={Cv} download>Descargar Curriculum</a>
                             </button>
                             {/* Datos de perfil de usuario */}
+                            <div class="main">
+                                <ul class="wrapper">
+                                    <li class="icon facebook">
+                                        <span class="tooltip">GitHub
+                                        </span>
+                                        <span><i class="fab fa-facebook">
+                                            <a href="https://github.com/MarcoCastellacci" target="_blank" rel="noopener noreferrer">
+                                                <img className='logo-redes' src="https://i.imgur.com/cye023n.png" alt="Github" />
+                                            </a>
+                                        </i></span>
+                                    </li>
+                                    <li class="icon twitter">
+                                        <span class="tooltip">Twitter</span>
+                                        <span><i class="fab fa-twitter">
+                                            <a href="https://twitter.com/Castellacci_M" target="_blank" rel="noopener noreferrer">
+                                                <img className='logo-redes' src="https://i.imgur.com/qnXxu8i.png" alt="Twitter" />
+                                            </a>
+                                        </i></span>
+                                    </li>
+                                    <li class="icon linkedin">
+                                        <span class="tooltip">LinkedIn</span>
+                                        <span><i class="fab fa-linkedin">
+                                            <a href="https://www.linkedin.com/in/marco-castellacci/" target="_blank" rel="noopener noreferrer">
+                                                <img className='logo-redes' src="https://i.imgur.com/xyGn5yf.png" alt="LinkedIn" />
+                                            </a>
+                                        </i></span>
+                                    </li>
+                                    <li class="icon whatsapp">
+                                        <span class="tooltip">Whatsapp</span>
+                                        <span><i class="fab fa-whatsapp">
+                                            <a href="https://wa.me/541166022971" target="_blank" rel="noopener noreferrer">
+                                                <img className='logo-redes' src="https://i.imgur.com/gwihoKw.png" alt="Github" />
+                                            </a>
+                                        </i></span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
+                    </div>
+                    <div className='txt-perfil'>
+                        <h4>
+                            <span className='bienvenido'>¡Bienvenidos a mi portfolio! </span> Soy un apasionado desarrollador con una sólida base de experiencia práctica en un entorno de simulación laboral REAL, acumulando más de 700 horas de dedicación. Durante este tiempo, he trabajado con una amplia gama de tecnologías y herramientas, como React, MongoDb, Node JS, Express, Git, Github, JavaScript, C#, Visual Studio, .NET, Python, SQL, HTML5 y CSS.
+                            <br />
+                            <br />
+                            Además de mi experiencia en el desarrollo web, también tengo habilidades destacadas en ventas y atención al cliente, lo cual me ha brindado una perspectiva centrada en el cliente y una comunicación efectiva. Aunque esta experiencia no está directamente relacionada con el desarrollo, creo firmemente que estas habilidades enriquecen mi capacidad para colaborar eficazmente en equipos y comprender las necesidades de los usuarios.
+                            <br />
+                            <br />
+                            He tenido el privilegio de liderar equipos de desarrollo, demostrando habilidades en el manejo de grupos, el logro de objetivos y la investigación autodidacta. Además, he impartido cursos de capacitación en FrontEnd, compartiendo mis conocimientos y habilidades con otros profesionales.
+                            <br />
+                            <br />
+                            Actualmente, me encuentro cursando el programa Codo a Codo para Python Developer y tengo previsto iniciar una tecnicatura en Desarrollo de Software en los Institutos de Formación Profesional de la Ciudad, con el fin de consolidar los conocimientos adquiridos a lo largo de mi trayectoria.
+                            <br />
+                            <br />
+                            Estoy emocionado y motivado para seguir aprendiendo, creciendo y mejorando como profesional. Siempre busco nuevos desafíos y oportunidades para aplicar mis habilidades y conocimientos en el desarrollo de soluciones innovadoras y de calidad.
+                            <br />
+                            <br />
+                            Gracias por visitar mi portfolio. ¡No dudes en ponerse en contacto conmigo para colaboraciones o proyectos interesantes!
+                        </h4>
                     </div>
                     <div className="home-container">
                         <form action="https://formsubmit.co/848ee880af437792600702bc576c1438" method='POST' className="contact-form">
@@ -119,29 +162,6 @@ export default function ProfileView() {
                             <input type="hidden" name="_captcha" value="false" />
                             <input type="hidden" name="_template" value="box" />
                         </form>
-                    </div>
-                    <div class="main">
-                        <ul class="wrapper">
-                            <li class="icon facebook">
-                                <span class="tooltip">GitHub</span>
-                                <span><i class="fab fa-facebook-f"></i></span>
-                            </li>
-                            <li class="icon twitter">
-                                <span class="tooltip">Twitter</span>
-                                <span><i class="fab fa-twitter"></i></span>
-                            </li>
-                            <li class="icon instagram">
-                                <a class="tooltip" href="https://www.instagram.com/mac_kako87" target="_blank" rel='noreferrer'>Instagram
-                                    <span><i class="fab fa-instagram">
-                                    </i></span>
-                                </a>
-                            </li>
-                            <li class="icon whatsapp">
-                                <a href="https://api.whatsapp.com/send?phone=+541166022971" target="_blank"></a>
-                                <span class="tooltip">Whatsapp</span>
-                                <span><i class="fab fa-whatsapp"></i></span>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </DashWrapper>

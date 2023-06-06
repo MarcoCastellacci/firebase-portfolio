@@ -53,7 +53,7 @@ export default function LoginView() {
             <>
                 <div className="banner-login">
                     <div className="img-homepage">
-                        <img src="https://i.imgur.com/oYuETeq.png" alt="Foto de mi Perfil" />
+                        <img src="https://i.imgur.com/lS5CWpg.png" alt="Foto de mi Perfil" />
                     </div>
                     <div className="title-portfolio">
                         <h1>Mi Portfolio </h1>

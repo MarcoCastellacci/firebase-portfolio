@@ -29,7 +29,7 @@ body {
 
 /* Login Page */
 .btn-login {
-    height: 50%;
+    /* height: 50%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,10 +42,11 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    height: 20vh;
-    background: url('../Assets/banner-fondo-portfolio.gif');
+    height: 30vh;
+    background-color: black;
+    /* background: url('../Assets/banner-fondo-portfolio.gif');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
     border-bottom: solid 10px hsla(120, 97%, 14%, 0.4);
 }
 
@@ -57,10 +58,9 @@ body {
 }
 
 .img-homepage img {
-    height: 80%;
-    width: 20%;
+    width: 25%;
     border-radius: 20px;
-    border: solid 10px hsla(120, 97%, 14%, 0.4);
+    /* border: solid 10px hsla(120, 97%, 14%, 0.4); */
 }
 
 .title-portfolio {
@@ -119,8 +119,10 @@ sub {
 }
 
 .nombre-cnotenedor {
+    margin-top: 2.5rem;
     display: flex;
     flex-direction: column;
+    text-align: center;
     color: #333;
     font-family: tahoma;
     font-size: 3rem;
@@ -152,7 +154,7 @@ sub {
     padding-left: 0.5rem;
     top: 0.2rem;
     left: 200px;
-    animation: openclose 5s ease-in-out infinite;
+    animation: openclose 10s ease-in-out infinite;
 }
 
 .word1,

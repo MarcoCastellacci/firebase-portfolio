@@ -32,6 +32,7 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
     }, [editUrl])
 
     useEffect(() => {
+        console.log(imageRef);
         if (imageRef.current) {
             imageRef.current.focus()
         };
@@ -79,7 +80,6 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
         onUpdate(docId, currentTitle, currentUrl, currentCategorie, currentImageUrl, description)
     }
     function handleBlurTitle(e) {
-        console.log(currentTitle);
         setEditTitle(false)
         onUpdate(docId, currentTitle, currentUrl, currentCategorie, currentImageUrl, description)
     }

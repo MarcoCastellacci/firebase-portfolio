@@ -24,46 +24,48 @@ const ColorButton = styled(Button)(({ theme }) => ({
 export default function ProyectsPages({ proyects }) {
 
     return (
-        <>{proyects.map((proyect, index) =>
-            <Card key={index} sx={{ margin: ".5rem", backgroundColor: "transparent", color: "rgb(94, 119, 94)" }}>
-                <CardActionArea>
-                    <CardMedia
-                        className='img-proyect'
-                        component="img"
-                        image={proyect.imageUrl}
-                        alt={proyect.title}
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            {proyect.title}
-                        </Typography>
-                        <Typography variant="body2" color="rgb(152, 152, 152)">
-                            {proyect.description ? (proyect.description.length > 40 ? proyect.description.substring(0, 40) + '...' : proyect.description) : ''}
-                        </Typography>
-                        <ColorButton>
-                            <LiveHelpTwoToneIcon onClick={() => {
-                                Swal.fire({
-                                    title: `${proyect.title}`,
-                                    text: `${proyect.description}`,
-                                    width: 600,
-                                    padding: '3em',
-                                    color: 'rgb(94, 119, 94)',
-                                    icon: 'info',
-                                    backdrop: `rgba(152, 152, 152,0.4)`
-                                })
-                            }}
-                            aria-label="show more" />
-                        </ColorButton>
-                    </CardContent>
-                    <CardActions>
-                        <ColorButton size="medium" variant="outlined" sx={{ color: "teal[300]" }}>
-                            <Link to={proyect.url} target="_blank" className='link'>
-                                Ver Mas
-                            </Link>
-                        </ColorButton>
-                    </CardActions>
-                </CardActionArea>
-            </Card>)}
+        <> <div className='proyect'>
+            {proyects.map((proyect, index) =>
+                <Card key={index} sx={{ margin: ".5rem", backgroundColor: "transparent", color: "rgb(94, 119, 94)" }} >
+                    <CardActionArea className='card-proyect'>
+                        <CardMedia
+                            className='img-proyect'
+                            component="img"
+                            image={proyect.imageUrl}
+                            alt={proyect.title}
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                {proyect.title}
+                            </Typography>
+                            <Typography variant="body2" color="rgb(152, 152, 152)">
+                                {proyect.description ? (proyect.description.length > 40 ? proyect.description.substring(0, 40) + '...' : proyect.description) : ''}
+                            </Typography>
+                            <ColorButton>
+                                <LiveHelpTwoToneIcon onClick={() => {
+                                    Swal.fire({
+                                        title: `${proyect.title}`,
+                                        text: `${proyect.description}`,
+                                        width: 600,
+                                        padding: '3em',
+                                        color: 'rgb(94, 119, 94)',
+                                        icon: 'info',
+                                        backdrop: `rgba(152, 152, 152,0.4)`
+                                    })
+                                }}
+                                    aria-label="show more" />
+                            </ColorButton>
+                        </CardContent>
+                        <CardActions>
+                            <ColorButton size="medium" variant="outlined" sx={{ color: "teal[300]" }}>
+                                <Link to={proyect.url} target="_blank" className='link'>
+                                    Ver Mas
+                                </Link>
+                            </ColorButton>
+                        </CardActions>
+                    </CardActionArea>
+                </Card>)}
+        </div>
         </>
     );
 }
