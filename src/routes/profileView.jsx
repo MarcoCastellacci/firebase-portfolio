@@ -10,13 +10,13 @@ import DashWrapper from "../components/dashboardWrapper"
 import LoaderAnimation from '../components/loader'
 import AuthProvider from '../components/authProvider'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 
 export default function ProfileView() {
     // const params = useParams();
     const [currentUser, setCurrentUser] = useState({});
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     // const [imgUrl, setImgUrl] = useState("")
     const [state, setState] = useState(0);
 
@@ -29,7 +29,7 @@ export default function ProfileView() {
         setState(2)
     }
     function handleUserNotLoggedIn() {
-        navigate('/login')
+        setState(2)
     }
     // useEffect(() => {
     //     getProfileUser();

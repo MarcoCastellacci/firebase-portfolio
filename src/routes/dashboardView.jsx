@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import AuthProvider from "../components/authProvider";
 // eslint-disable-next-line
 import { useEffect, useState } from "react";
@@ -18,7 +18,7 @@ import '../styles/formularios.css'
 export default function DashboardView() {
 
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const [currentUser, setCurrentUser] = useState()
     const [state, setState] = useState(0)
     const [adminPermisison, setAdminPermission] = useState(false)
@@ -65,9 +65,14 @@ export default function DashboardView() {
         setProyects([...resProyects])
         setTechnologies([...resTechs])
     }
-    function handleUserNotLoggedIn() {
-        navigate("/login")
-
+    async function handleUserNotLoggedIn() {
+        setState(2)
+        const resProyects = await getProyects(categorie)
+        const resTechs = await getKnwoledge(categorie)
+        // console.log(resProyects);
+        // console.log(resTechs);
+        setProyects([...resProyects])
+        setTechnologies([...resTechs])
     }
 
     if (state === 0) {

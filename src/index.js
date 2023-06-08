@@ -18,6 +18,7 @@ root.render(
     <Routes>
       <Route path="/" element={<LoginView />} />
       <Route path="/login" element={<LoginView />} />
+      <Route path='/login/admin' element={<LoginView/>}/>
       <Route path='/home' element={<DashboardView />} />
       <Route path='/profile' element={<ProfileView />} />
       <Route path='/signout' element={<SignOutView />} />
