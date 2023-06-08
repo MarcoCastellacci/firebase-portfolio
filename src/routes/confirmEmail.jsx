@@ -54,7 +54,7 @@ export default function ConfirmEmailView() {
             <DashWrapper>
                 <div className="bg-container confirm-email">
                     <div className="img-logo">
-                        <img src="https://i.imgur.com/oYuETeq.png" alt="Logo de mi Web" />
+                        <img src="https://i.imgur.com/lS5CWpg.png" alt="Logo de mi Web" />
                     </div>
                     <div className="confirm-txt">
                         <h1>Bienvenido a mi Portfolio {currentUser.displayName}</h1>

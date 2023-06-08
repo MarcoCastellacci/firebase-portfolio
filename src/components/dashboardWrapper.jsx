@@ -18,7 +18,6 @@ export default function DashWrapper({ children, user }) {
             console.error(error);
         }
     }, [user])
-
     return (<>
         <div className="bg-container">
             <nav>

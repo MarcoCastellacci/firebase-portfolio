@@ -56,18 +56,18 @@ export default function LoginView() {
                         <img src="https://i.imgur.com/lS5CWpg.png" alt="Foto de mi Perfil" />
                     </div>
                     <div className="title-portfolio">
-                        <h1>Mi Portfolio </h1>
+                        <h2>Mi Portfolio </h2>
                         <sub>Desarrollador</sub>
                     </div>
                 </div>
                 <div className="description-profile bg-container">
+                    <div className="title-portfolio">
+                        <h1>Marco Castellacci</h1>
+                    </div>
                     <div className="contenedor-txt-description">
                         <h2 className="description-txt-profile ">
                             Soy un desarrollador web apasionado por la tecnología, dedicado a perfeccionar mis habilidades y conocimientos. Mi entusiasmo por aprender nuevas tecnologías y mi capacidad para colaborar en equipo me impulsan a alcanzar resultados excepcionales. La tecnología y la programación han dejado de ser solo un trabajo para convertirse en mi pasión.
                         </h2>
-                    </div>
-                    <div className="title-portfolio">
-                        <h1>Marco Castellacci</h1>
                     </div>
                     <div>
                         <h2 className="nombre-cnotenedor">
@@ -99,6 +99,6 @@ export default function LoginView() {
         onUserLoggedIn={handleUserLoggedIn}
         onUserNotRegister={handleUserNotRegister}
         onUserNotLoggedIn={handleUserNotLoggedIn}>
-        <LoaderAnimation/>
+        <LoaderAnimation />
     </AuthProvider>
 }

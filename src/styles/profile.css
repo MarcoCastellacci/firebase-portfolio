@@ -1,3 +1,11 @@
+h2 {
+    font-size: 52px;
+    font-weight: 800;
+    color: rgb(94, 119, 94);
+    margin: 0;
+    text-align: center;
+}
+
 .profile-container {
     display: flex;
     flex-direction: column;
@@ -394,7 +402,28 @@ a {
     font-weight: 300;
 }
 
-.bienvenido{
+.bienvenido {
     font-weight: bolder !important;
     font-size: larger;
+}
+
+@media (max-width: 820px) {
+    .profile-data {
+        justify-content: center;
+        flex-direction: column;
+        margin: 1rem;
+        margin-bottom: 0;
+    }
+
+    .img-profile img {
+        width: 50%;
+    }
+
+    .buttonDownload a {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
 }

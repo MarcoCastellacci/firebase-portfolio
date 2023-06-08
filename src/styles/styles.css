@@ -29,7 +29,6 @@ body {
 
 /* Login Page */
 .btn-login {
-    /* height: 50%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,13 +39,9 @@ body {
 .banner-login {
     width: 100%;
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
     height: 30vh;
     background-color: black;
-    /* background: url('../Assets/banner-fondo-portfolio.gif');
-    background-repeat: no-repeat;
-    background-size: cover; */
     border-bottom: solid 10px hsla(120, 97%, 14%, 0.4);
 }
 
@@ -60,7 +55,6 @@ body {
 .img-homepage img {
     width: 25%;
     border-radius: 20px;
-    /* border: solid 10px hsla(120, 97%, 14%, 0.4); */
 }
 
 .title-portfolio {
@@ -76,17 +70,18 @@ body {
     font-size: 52px;
     font-weight: 800;
     color: rgb(94, 119, 94);
+    margin: 1.5rem;
+}
+
+.title-portfolio h2 {
+    font-size: 52px;
+    font-weight: 800;
+    color: rgb(94, 119, 94);
     margin: 0;
 }
 
 .title-portfolio h3 {
     font-size: 24px;
-}
-
-.title-banner-portfolio {
-    display: flex;
-    justify-content: center !important;
-    flex-direction: column;
 }
 
 .description-profile {
@@ -122,6 +117,7 @@ sub {
     margin-top: 2.5rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     text-align: center;
     color: #333;
     font-family: tahoma;
@@ -144,7 +140,6 @@ sub {
 }
 
 .message {
-
     background-color: rgb(4, 78, 38);
     color: rgb(152, 152, 152);
     display: block;
@@ -165,7 +160,7 @@ sub {
 
 @keyframes openclose {
     0% {
-        top: 0.2rem;
+        transform: translateY(0);
         width: 0;
     }
 
@@ -242,6 +237,96 @@ sub {
     }
 }
 
+@media only screen and (max-width: 768px) {
+    .banner-login {
+        flex-direction: column;
+    }
+
+    .img-homepage {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .img-homepage img {
+        width: 30%;
+    }
+
+    .title-portfolio h2 {
+        margin-top: -50px;
+        font-size: 28px;
+    }
+
+    .title-portfolio h1 {
+        font-size: 36px;
+    }
+
+    .title-portfolio h3 {
+        font-size: 18px;
+    }
+
+    .description-txt-profile {
+        font-size: 14px;
+    }
+
+    sub {
+        font-size: 18px;
+    }
+
+    .nombre-cnotenedor {
+        font-size: 2rem;
+    }
+
+    .nombre span {
+        font-size: 32px;
+    }
+
+    .nombre-cnotenedor {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .banner-login {
+        flex-direction: column;
+    }
+
+    .img-homepage {
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .img-homepage img {
+        width: 50%;
+    }
+
+    .title-portfolio h2 {
+        margin-top: -50px;
+        font-size: 28px;
+    }
+
+    .title-portfolio h3 {
+        font-size: 14px;
+    }
+
+    .title-portfolio h1 {
+        margin: .5rem 0;
+    }
+
+    .description-txt-profile {
+        font-size: 12px;
+    }
+
+    sub {
+        font-size: 16px;
+    }
+
+    .nombre-cnotenedor {
+        display: none;
+    }
+}
+
 /* Confirm Email Page */
 .confirm-email {
     height: 100vh;
@@ -273,7 +358,8 @@ sub {
 }
 
 .img-logo img {
-    width: 10%;
+    width: 15%;
+    border-radius: 20px;
 }
 
 /* Detail */
@@ -316,7 +402,6 @@ ul {
     list-style: none;
 }
 
-
 ul li .navbar-dash {
     width: 100%;
     font-size: 1vw;
@@ -357,4 +442,45 @@ ul:hover li .navbar-dash:not(:hover) {
 .nav-portfolio {
     font-family: 'Expletus Sans', cursive;
     width: 50%;
+}
+
+@media (min-width: 768px) and (max-width: 850px) {
+    .nav-portfolio h1 {
+        font-size: 25px;
+    }
+
+    ul li .navbar-dash {
+        font-size: 20px;
+        margin: 0 .2em;
+    }
+
+    ul {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    ul li .navbar-dash {
+        font-size: 20px;
+        padding: 0;
+        margin: 0 .2em;
+        width: 100%;
+    }
+
+    ul {
+        justify-content: space-evenly;
+        margin: 0;
+    }
+
+    .nav-portfolio {
+        display: none;
+    }
+
+    .confirm-txt {
+        text-align: center;
+    }
+
+    .img-logo img {
+        width: 25%;
+    }
 }

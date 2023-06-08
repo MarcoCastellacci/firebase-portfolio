@@ -154,7 +154,7 @@ export default function ProfileView() {
                                 <input placeholder="Your Phone Number" name='Tel' type="tel" className="textInput" />
                             </div>
                             <div className="textInputWrapper textarea-input">
-                                <textarea name="Msj" placeholder='Leave me a message' className='textarea-msj' rows="5" cols="150"></textarea>
+                                <textarea name="Msj" placeholder='Leave me a message... // Deja Tu Mensaje...' className='textarea-msj' rows="5" cols="150"></textarea>
                             </div>
                             <input type="submit" value="Send" className="submitButton" />
 

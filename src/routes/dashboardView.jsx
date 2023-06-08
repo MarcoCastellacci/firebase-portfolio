@@ -221,9 +221,15 @@ export default function DashboardView() {
         <DashWrapper user={currentUser}>
             <div className="bg-container">
                 <div className="home-container">
+                    <h2>Mis Proyectos</h2>
                     <div className="proyect-container">
                         <ProyectsPages proyects={proyects} />
                     </div>
+                </div>
+                <div>
+                    <h2>Mis Herramientas y Tecnologias</h2>
+                </div>
+                <div className="home-container">
                     {technologies?.map((technique, index) => (
                         <div className="technos" key={index}>
                             <TechnologiesPage key={technique.docId} title={technique.title} imageUrl={technique.imageUrl} description={technique.description} />
