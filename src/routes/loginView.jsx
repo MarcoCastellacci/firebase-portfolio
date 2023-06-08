@@ -51,9 +51,10 @@ export default function LoginView() {
             }
         }
     }
-    // function handleContinuar() {
-    //     navigate('/home')
-    // }
+    function handleContinuar() {
+        navigate('/login/admin')
+        setIsAdminLogin(window.location.pathname === "/login/admin");
+    }
     useEffect(() => {
         // Check if the current location is "/login/admin" during component initialization
         setIsAdminLogin(window.location.pathname === "/login/admin");
@@ -97,6 +98,9 @@ export default function LoginView() {
                             <button className="link-btn">
                                 <Link className="link" to={'/home'}>Continuar</Link>
                             </button>
+                            <button className="link-btn admin" onClick={handleContinuar}>
+                                <p className="link">Continuar Como Administrador</p>
+                            </button>
                         </div>
                     </div>
                 </>
@@ -119,10 +123,10 @@ export default function LoginView() {
                         </div>
                         <div className="contenedor-txt-description">
                             <h2 className="description-txt-profile ">
-                                Soy un desarrollador web apasionado por la tecnología, dedicado a perfeccionar mis habilidades y conocimientos. Mi entusiasmo por aprender nuevas tecnologías y mi capacidad para colaborar en equipo me impulsan a alcanzar resultados excepcionales. La tecnología y la programación han dejado de ser solo un trabajo para convertirse en mi pasión.
+                                Esta area esta destinada para que se verifique al usuario administrador y poder hacer el upload de los proyectos como nuevas tecnologias que vaya adquiriendo. Si llegaste hasta aqui tienes 2 formas de continuar, con tu usuario de Google (LOS DATOS NO SERAN ALMACENADOS NI UTILIZADOS MAS ALLA DE TU DESCONEXION) o simplemente borrando la palabra "/admin" del navegador.
                             </h2>
                         </div>
-                        <div>
+                        {/* <div>
                             <h2 className="nombre-cnotenedor">
                                 <div className="nombre"><span>Marco Castellacci</span> </div>
                                 <div className="message">
@@ -131,7 +135,7 @@ export default function LoginView() {
                                     <div className="word3">Web Designer</div>
                                 </div>
                             </h2>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="login btn-login">
                         <button className="button" onClick={handleOnCLick}>

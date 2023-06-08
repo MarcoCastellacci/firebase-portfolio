@@ -435,6 +435,10 @@ ul:hover li .navbar-dash:not(:hover) {
     color: rgb(80, 124, 113);
 }
 
+.admin {
+    margin-bottom: 2rem;
+}
+
 .link-btn:hover {
     box-shadow: 10px 10px 10px 1px rgba(80, 124, 113, 0.7);
 }
