@@ -2,7 +2,7 @@
 // import { Link } from "react-router-dom"
 
 import ProfileImg from '../Assets/Perfil.png'
-import Cv from '../Assets/MarcoCastellacci.pdf'
+import Cv from '../Assets/Marco_Castellacci.pdf'
 // import { getProfilePhoto, getUserProfileInfo, userNameExist } from "../firebase/firebase";
 
 import '../styles/profile.css'

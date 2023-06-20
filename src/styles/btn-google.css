@@ -26,3 +26,10 @@ button {
 button:hover {
     transform: scale(1.02);
 }
+
+.btn-aqui {
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: bold;
+    color: rgb(66, 139, 66);
+}

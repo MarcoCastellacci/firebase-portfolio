@@ -123,7 +123,7 @@ export default function LoginView() {
                         </div>
                         <div className="contenedor-txt-description">
                             <h2 className="description-txt-profile ">
-                                Esta area esta destinada para que se verifique al usuario administrador y poder hacer el upload de los proyectos como nuevas tecnologias que vaya adquiriendo. Si llegaste hasta aqui tienes 2 formas de continuar, con tu usuario de Google (LOS DATOS NO SERAN ALMACENADOS NI UTILIZADOS MAS ALLA DE TU DESCONEXION) o simplemente borrando la palabra "/admin" del navegador.
+                                Esta area esta destinada para que se verifique al usuario administrador y poder hacer el upload de los proyectos como nuevas tecnologias que vaya adquiriendo. Si llegaste hasta aqui tienes 2 formas de continuar, con tu usuario de Google (LOS DATOS NO SERAN ALMACENADOS NI UTILIZADOS MAS ALLA DE TU DESCONEXION) o simplemente haz click <a className="btn-aqui" href="https://marcocastellacci.com.ar/">Aquí</a>.
                             </h2>
                         </div>
                         {/* <div>
