@@ -67,6 +67,7 @@ export async function userNameExist(username) {
     }
 
 }
+
 export async function ConfirmEmail(email) {
     const users = [];
     try {
