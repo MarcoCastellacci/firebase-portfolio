@@ -60,7 +60,7 @@ export default function LoginView() {
         setIsAdminLogin(window.location.pathname === "/login/admin");
     }, []);
     // const isAdminLogin = location.pathname === "/login/admin";
-    console.log(isAdminLogin);
+    // console.log(isAdminLogin);
 
     if (state === 4) {
         if (!isAdminLogin) {
@@ -126,16 +126,6 @@ export default function LoginView() {
                                 Esta area esta destinada para que se verifique al usuario administrador y poder hacer el upload de los proyectos como nuevas tecnologias que vaya adquiriendo. Si llegaste hasta aqui tienes 2 formas de continuar, con tu usuario de Google (LOS DATOS NO SERAN ALMACENADOS NI UTILIZADOS MAS ALLA DE TU DESCONEXION) o simplemente haz click <a className="btn-aqui" href="https://marcocastellacci.com.ar/">Aquí</a>.
                             </h2>
                         </div>
-                        {/* <div>
-                            <h2 className="nombre-cnotenedor">
-                                <div className="nombre"><span>Marco Castellacci</span> </div>
-                                <div className="message">
-                                    <div className="word1">Fullstack Developer</div>
-                                    <div className="word2">Software Developer</div>
-                                    <div className="word3">Web Designer</div>
-                                </div>
-                            </h2>
-                        </div> */}
                     </div>
                     <div className="login btn-login">
                         <button className="button" onClick={handleOnCLick}>
