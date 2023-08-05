@@ -1,7 +1,7 @@
 // import { useEffect, useState } from "react";
 // import { Link } from "react-router-dom"
 
-import ProfileImg from '../Assets/Perfil.png'
+import ProfileImg from '../Assets/Perfil.jpg'
 import Cv from '../Assets/Marco_Castellacci.pdf'
 // import { getProfilePhoto, getUserProfileInfo, userNameExist } from "../firebase/firebase";
 
@@ -97,7 +97,7 @@ export default function ProfileView() {
                                     <li class="icon twitter">
                                         <span class="tooltip">Twitter</span>
                                         <span><i class="fab fa-twitter">
-                                            <a href="https://twitter.com/Castellacci_M" target="_blank" rel="noopener noreferrer">
+                                            <a href="https://twitter.com/vikingo_2_0" target="_blank" rel="noopener noreferrer">
                                                 <img className='logo-redes' src="https://i.imgur.com/qnXxu8i.png" alt="Twitter" />
                                             </a>
                                         </i></span>

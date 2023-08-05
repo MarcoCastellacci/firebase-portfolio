@@ -3,8 +3,12 @@ input {
     width: 100%;
 }
 
-.edit{
+.edit {
     width: 25%;
+}
+
+.edit h2 {
+    font-size: 2em;
 }
 
 .editable-page {

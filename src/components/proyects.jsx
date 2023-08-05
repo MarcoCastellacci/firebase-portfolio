@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react"
+
 import '../styles/dashstyle.css'
 
 
 
 export default function Proyects({ docId, title, url, imageUrl, description, onDelete, categoria, onUpdate }) {
+
     const [currentTitle, setCurrentTitle] = useState(title);
     const [currentUrl, setCurrentUrl] = useState(url);
     const [currentCategorie, setCurrentCategorie] = useState(categoria)
@@ -37,11 +39,13 @@ export default function Proyects({ docId, title, url, imageUrl, description, onD
             imageRef.current.focus()
         };
     }, [editImageUrl])
+
     useEffect(() => {
         if (categorieRef.current) {
             categorieRef.current.focus()
         };
     }, [editCategorie])
+
     function handleEditUrl() {
         setEditUrl(true)
     }
